@@ -15,7 +15,7 @@ const router = new Router({
     prefix: '/api/v1'
 })
 
-// 创建回复
+// 获取token
 router.post('/upload/token', new Auth(AUTH_ADMIN).m, async (ctx) => {
     // console.log('mac', mac)
     const options = {

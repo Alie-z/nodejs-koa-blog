@@ -38,13 +38,15 @@
     "@lib": "app/lib",
     "@models": "app/models",
     "@service": "app/service",
-    "@validators": "app/validators"
+    "@validators": "app/validators",
+    "@crawler": "app/crawler"
   },
   "homepage": "https://github.com/lfb/nodejs-koa2-blog#readme",
   "dependencies": {
     "@koa/cors": "^3.0.0",
     "basic-auth": "^2.0.1",
     "bcryptjs": "^2.4.3",
+    "cheerio": "^1.0.0-rc.12",
     "hashids": "^2.1.0",
     "highlight.js": "^11.1.0",
     "jest": "^24.9.0",
@@ -60,6 +62,7 @@
     "nodemon": "^2.0.12",
     "npm-check": "^5.9.0",
     "qiniu": "^7.4.0",
+    "request": "^2.88.2",
     "require-directory": "^2.1.1",
     "sequelize": "^6.6.5",
     "supertest": "^4.0.2",

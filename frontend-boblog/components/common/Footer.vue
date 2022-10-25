@@ -1,8 +1,8 @@
 <template>
   <div class="response-wrap footer">
     <div class="site">
-      <span>© 波波博客 - BoBlog.com</span>
-      <span>itbo@163.com</span>
+      <span>© Aliez博客</span>
+      <span>17512018620@163.com</span>
     </div>
     <div class="copyright">
       <a

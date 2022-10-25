@@ -1,7 +1,7 @@
 /**
  * @description 管理员的数据访问对象
  * @description Data Access Objects for Administrators
- * @author 梁凤波, Peter Liang
+ * @author Aliez
  */
 
 const { Admin } = require('@models/admin')

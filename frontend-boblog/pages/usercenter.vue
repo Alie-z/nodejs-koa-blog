@@ -61,16 +61,16 @@ export default {
     return {
       title: `${
         this.userInfo && this.userInfo.username
-      } - 个人中心  - boblog.com`,
+      } - 个人中心  `,
       meta: [
         {
           name: 'keywords',
           content:
-            '波波,博客,波波博客,梁凤波,bo,blog,boblog,前端开发工程师,前端性能优化,JavaScript,css,html',
+            'Aliez,博客,Aliez博客,bo,blog,boblog,前端开发工程师,前端性能优化,JavaScript,css,html',
         },
         {
           name: 'description',
-          content: '波波博客 - BoBlog.com，专注于前端开发技术，前端性能优化！',
+          content: 'Aliez博客 ，专注于前端开发技术，前端性能优化！',
         },
       ],
     }

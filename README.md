@@ -2,7 +2,7 @@
 
 前言：这个项目我花了很多时间去学习维护迭代，其中2020年4月到今年6月份，其中有非常多原因没有继续维护迭代，这一年中，我经历了很多事情：有痛苦的，有快乐的，也有大起大落的。这一年的经历总结一句话：喜欢的，就赶紧去做吧，选择了，就别后悔了。现在，我回来了，这个月我删掉了所有的commit log，删了之前大量的辣鸡代码，把我积累到的知识重新写了一版本，我会继续优化迭代这个项目，希望能和伙伴们继续快乐的生活，快乐的工作！
 
-线上地址：[www.boblog.com](http://www.boblog.com)
+线上地址：--
 
 ## 一、这是个什么的项目？
 实战开发的一套完整的博客项目网站：
@@ -97,5 +97,7 @@ $ npm run dev 或者 yarn dev
 
 喜欢或对你有帮助的话，请你点一个星星 <strong style='color:red;'>star</strong> 鼓励我，或者您有更好的建议和意见，请提出来告知我，可以留言 [Issues](https://github.com/lfb/nodejs-koa-blog/issues/new)。希望能够帮助到你学习！Thanks！共勉！
 
-[MIT](https://github.com/lfb/nodejs-koa-blog/blob/master/LICENSE), by 梁凤波
+## todo
+1. tujidao uuid管理
+2. 图片上传切换自己的
 

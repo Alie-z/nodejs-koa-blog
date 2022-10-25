@@ -1,6 +1,6 @@
 ## 接口前缀
 ```shell
-http://localhost:3000/api/v1
+http://localhost:9000/api/v1
 ```
 
 # 管理员
@@ -93,7 +93,7 @@ config.headers['Authorization'] = _encode();
     "errorCode": 0,
     "data": {
         "id": 3,
-        "nickname": "梁凤波",
+        "nickname": "Aliez",
         "email": "itbo@163.com"
     }
 }

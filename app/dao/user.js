@@ -1,7 +1,7 @@
 /**
  * @description 用户的数据访问对象
  * @description Data Access Objects for Useristrators
- * @author 梁凤波, Peter Liang
+ * @author Aliez
  */
 const { Op } = require('sequelize')
 const { User } = require('@models/user')
