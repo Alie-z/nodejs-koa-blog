@@ -147,8 +147,8 @@ export default {
   display: block;
   width: 100px;
   height: 56px;
-  background: url('https://cdn.boblog.com/logo.png') center center no-repeat;
-  background-size: 100px;
+  background: url('https://mbs1.bdstatic.com/searchbox/mappconsole/image/20221026/cd3f97e0-eb66-4d64-a986-3939bb5e09ef.png') center center no-repeat;
+  background-size: 54px;
 }
 .nav {
   box-sizing: border-box;

@@ -6,7 +6,7 @@
       </div>
       <div class="form-list">
         <div class="logo">
-          <img src="https://cdn.boblog.com/logo.png" alt="logo" />
+          <img src="https://mbs1.bdstatic.com/searchbox/mappconsole/image/20221026/cd3f97e0-eb66-4d64-a986-3939bb5e09ef.png" alt="logo" />
         </div>
         <div v-if="!isLogin" class="form-item">
           <input

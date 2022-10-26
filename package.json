@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon app.js",
-    "test": "jest _tests  --forceExit --runInBand --colors"
+    "test": "jest _tests  --forceExit --runInBand --colors",
+    "eslint:comment": "使用 ESLint 检查并自动修复 src 目录下所有扩展名为 .js 和 .vue 的文件",
+    "eslint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src",
+    "prettier:comment": "自动格式化当前目录下的所有文件",
+    "prettier": "prettier --write"
   },
   "repository": {
     "type": "git",
@@ -71,5 +75,13 @@
   },
   "directories": {
     "test": "_tests"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^8.26.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-vue": "^9.6.0",
+    "prettier": "^2.7.1"
   }
 }

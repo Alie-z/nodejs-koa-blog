@@ -6,16 +6,16 @@
           {{ article.title }}
         </h1>
         <div class="info">
-          <span v-if="nickname" class="author"> By {{ nickname }} </span>
-          <span class="created-at">{{ article.created_at }}</span>
-          <span v-if="article.category_info" class="category">
+             <span v-if="nickname" class="author"> By {{ nickname }} </span>
+                <span class="created-at">{{ article.created_at }}</span>
+             <span v-if="article.category_info" class="category">
             文章分类：{{ article.category_info.name }}
           </span>
         </div>
-        <div class="article-content" v-html="article.content"></div>
+         <div class="article-content" v-html="article.content"></div>
       </div>
-      <div class="fixed-sidebar">
-        <div class="fixed-scroll-top">
+         <div class="fixed-sidebar">
+          <div class="fixed-scroll-top">
           <i class="el-icon-top" @click="scrollTop"></i>
         </div>
       </div>
@@ -34,90 +34,90 @@
   </div>
 </template>
 <script>
-import { getArticleDetail } from '@/request/api/article'
-import ArticleComment from '@/components/article/ArticleComment'
-import { mapState } from 'vuex'
-import { component as VueLazyComponent } from '@xunlei/vue-lazy-component'
+import {getArticleDetail} from '@/request/api/article';
+import ArticleComment from '@/components/article/ArticleComment';
+import {mapState} from 'vuex';
+import {component as VueLazyComponent} from '@xunlei/vue-lazy-component';
 
 export default {
-  name: 'ArticleDetail',
-  components: {
-    ArticleComment,
-    VueLazyComponent,
-  },
-  async asyncData(context) {
-    const { id } = context.query
-    const params = {
-      id,
-      is_markdown: true,
-    }
-    const [err, res] = await getArticleDetail(params)
-    if (!err) {
-      return {
-        article: res.data.data,
-      }
-    }
-  },
-  data() {
-    return {
-      isLogin: false,
-    }
-  },
-  async fetch({ store }) {
-    await store.dispatch('category/getCategoryData')
-  },
-  head() {
-    const article = this.article || {}
-    return {
-      title: article.title,
-      meta: [
-        { name: 'keywords', content: article.seo_keyword },
-        { name: 'description', content: article.description },
-      ],
-    }
-  },
-  computed: {
-    ...mapState({
-      userInfo: (state) => state.user.userInfo,
-      isLoginStatus: (state) => state.user.isLoginStatus,
-    }),
-    nickname() {
-      if(this.article && this.article.admin_info) {
-        return this.article.admin_info.nickname
-      }
-      return ''
-    }
-  },
-  beforeDestroy() {
-    if(this.progress) {
-      this.progress.removeProgress()
-      this.progress = null
-    }
+    name: 'ArticleDetail',
+    components: {
+        ArticleComment,
+        VueLazyComponent
+    },
+    async asyncData(context) {
+        const {id} = context.query;
+        const params = {
+            id,
+            is_markdown: true
+        };
+        const [err, res] = await getArticleDetail(params);
+        if (!err) {
+            return {
+                article: res.data.data
+            };
+        }
+    },
+    data() {
+        return {
+            isLogin: false
+        };
+    },
+    async fetch({store}) {
+        await store.dispatch('category/getCategoryData');
+    },
+    head() {
+        const article = this.article || {};
+        return {
+            title: article.title,
+            meta: [
+                {name: 'keywords', content: article.seo_keyword},
+                {name: 'description', content: article.description}
+            ]
+        };
+    },
+    computed: {
+        ...mapState({
+            userInfo: state => state.user.userInfo,
+            isLoginStatus: state => state.user.isLoginStatus
+        }),
+        nickname() {
+            if (this.article && this.article.admin_info) {
+                return this.article.admin_info.nickname;
+            }
+            return '';
+        }
+    },
+    beforeDestroy() {
+        if (this.progress) {
+            this.progress.removeProgress();
+            this.progress = null;
+        }
 
-  },
-  mounted() {
-    this.initData()
-  },
-  methods: {
-    initData() {
-      this.$nextTick(() => {
-        const ProgressIndicator = require('@/lib/progress-indicator')
-        // eslint-disable-next-line no-new
-        this.progress = new ProgressIndicator()
-      })
     },
-    // 回到顶部
-    scrollTop() {
-      this.$scrollTo(0)
+    mounted() {
+        this.initData();
     },
-    // 点击展开评论
-    onLoadEnd() {
-      this.$nextTick(() => {
-        this.progress.calculateWidthPrecent()
-      })
+    methods: {
+        initData() {
+            this.$nextTick(() => {
+                const ProgressIndicator = require('@/lib/progress-indicator');
+                // eslint-disable-next-line no-new
+                this.progress = new ProgressIndicator();
+            });
+        },
+        // 回到顶部
+        scrollTop() {
+            this.$scrollTo(0);
+        },
+        // 点击展开评论
+        onLoadEnd() {
+            this.$nextTick(() => {
+                this.progress.calculateWidthPrecent();
+            });
+        }
     }
-  },
-}
+};
 </script>
 
 <style scoped lang="scss">
@@ -192,4 +192,3 @@ li {
   }
 }
 </style>
-

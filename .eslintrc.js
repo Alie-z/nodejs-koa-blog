@@ -1,106 +1,26 @@
 module.exports = {
     root: true,
     env: {
-        browser: true,
-        node: true
+        node: true,
+        es6: true,
+        browser: true
     },
     parserOptions: {
-        parser: '@babel/eslint-parser',
-        requireConfigFile: false
+    // parser: '@babel/eslint-parser',
+    // requireConfigFile: false
+        parser: 'babel-eslint'
     },
     extends: [
-        '@nuxtjs',
-        'plugin:vue/vue3-recommended',
+        'eslint:recommended',
+        // 'plugin:prettier/recommended', // 加入这一行，这是官方推荐的引入方式
+        // '@nuxtjs',
+        // 'plugin:nuxt/recommended',
         'prettier'
     ],
     plugins: [],
     // add your custom rules here
     rules: {
-        'vue/attributes-order': 1,
-        'vue/order-in-components': [
-            'error', {
-                'order': [
-                    'el',
-                    'name',
-                    'parent',
-                    'functional',
-                    ['delimiters', 'comments'],
-                    ['components', 'directives', 'filters'],
-                    'extends',
-                    'mixins',
-                    'inheritAttrs',
-                    'model',
-                    ['props', 'propsData'],
-                    'data',
-                    'computed',
-                    'watch',
-                    'LIFECYCLE_HOOKS',
-                    'beforeCreate',
-                    'created',
-                    'mounted',
-                    'beforeDestroy',
-                    'destroyed',
-                    'methods',
-                    ['template', 'render'],
-                    'renderError'
-                ]
-            }
-        ],
-        'vue/html-indent': [2, 4],
-        // html 内 缩进
-        'vue/no-multi-spaces': [2, {ignoreProperties: false}],
-        // html 属性中不允许出现多个空格
-        'vue/no-spaces-around-equal-signs-in-attribute': [2],
-        // html 代码中 “=” 前后不能有空格
-        'vue/prop-name-casing': [2],
-        // 这条规则强制在vue组件(camelCase)中使用正确的支柱外壳。
-        'vue/require-prop-types': 2,
-        // 在 props 中至少要指定类型
-        'vue/attribute-hyphenation': [2, 'always'],
-        // 强制在Vue模板中的自定义组件上使用连字符属性名称
-        'vue/html-closing-bracket-spacing': [
-            // 标签前后空格
-            2, {
-                // 标签最前面不允许出现空格
-                'startTag': 'never',
-                // 标签最后面不允许出现空格
-                'endTag': 'never',
-                // 自闭合标签 后必须有一个空格
-                'selfClosingTag': 'always'
-            }
-        ],
-        // 不允许缺少结束标记。
-        'vue/html-end-tags': [2],
-        // html 标签必须使用 双引号
-        'vue/html-quotes': [2, 'double'],
-        'vue/multiline-html-element-content-newline': [
-            // 内容 不允许出现断行
-            2, {
-                'ignoreWhenEmpty': true,
-                'allowEmptyLines': true
-            }
-        ],
-        // 插值两端必须留一个空格
-        'vue/mustache-interpolation-spacing': [2, 'always'],
-        // v-bind 指令必须使用缩写
-        'vue/v-bind-style': [2, 'shorthand'],
-        // v-on 指令必须使用缩写
-        'vue/v-on-style': [2, 'shorthand'],
-        // "vue/this-in-template": [2, "never"], // 标签内 不需要写this
-        // 强制 标签使用 中横线间隔
-        'vue/component-name-in-template-casing': [
-            2, 'kebab-case', {
-                'registeredComponentsOnly': false
-                // 检查所有
-            }
-        ],
-        'vue/html-closing-bracket-newline': [
-            2, {
-                'singleline': 'never',
-                'multiline': 'never'
-            }
-        ],
-        // 数组紧贴括号部分不允许包含空格。
+    // 数组紧贴括号部分不允许包含空格。
         'array-bracket-spacing': ['error', 'never'],
         // 对象紧贴花括号部分不允许包含空格。
         'object-curly-spacing': ['error', 'never'],
@@ -252,7 +172,10 @@ module.exports = {
         'no-unsafe-negation': 'error',
         'no-self-compare': 'off',
         'sort-vars': 'off',
-        'space-before-function-paren': [2, {anonymous: 'always', named: 'never', asyncArrow: 'always'}],
+        'space-before-function-paren': [
+            2,
+            {anonymous: 'always', named: 'never', asyncArrow: 'always'}
+        ],
         'use-isnan': 'off',
         'no-confusing-arrow': 'off',
         'no-restricted-properties': 'off',
@@ -272,7 +195,7 @@ module.exports = {
         'no-extra-semi': 'error',
         'no-nested-ternary': 'off',
         // 驼峰命名法
-        camelcase: [2, {properties: 'never'}],
+        camelcase: [2, {properties: 'always'}],
         'no-restricted-syntax': 'off',
         'no-extra-boolean-cast': 'off',
         'no-empty-function': 'warn',
@@ -349,7 +272,10 @@ module.exports = {
         'no-throw-literal': 'warn',
         'operator-linebreak': [2, 'before'],
         // 函数 class 变量在未申明前不可使用
-        'no-use-before-define': ['error', {functions: true, classes: true, variables: true}],
+        'no-use-before-define': [
+            'error',
+            {functions: true, classes: true, variables: true}
+        ],
         'no-mixed-spaces-and-tabs': 'off',
         'no-compare-neg-zero': 'error',
         yoda: 'warn',

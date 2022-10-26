@@ -39,108 +39,107 @@
   </div>
 </template>
 <script>
-import { mapState } from 'vuex'
-import { getArticleList } from '@/request/api/article'
+import {mapState} from 'vuex';
+import {getArticleList} from '@/request/api/article';
 
 export default {
-  name: 'HomeIndex',
-  async asyncData(context) {
+    name: 'HomeIndex',
+    async asyncData(context) {
     // eslint-disable-next-line camelcase
-    const { id, keyword, category_id, page = 1 } = context.query
+        const {id, keyword, category_id, page = 1} = context.query;
 
-    const [err, res] = await getArticleList({
-      id,
-      category_id,
-      keyword,
-      page,
-      is_category: 1,
-      is_admin: 1,
-    })
-    console.log('🚀 > asyncData > res', res);
+        const [err, res] = await getArticleList({
+            id,
+            category_id,
+            keyword,
+            page,
+            is_category: 1,
+            is_admin: 1
+        });
 
-    if (!err) {
-      const isLoad = res.data.data.meta.total_pages > page
-      return {
-        isClear: !!keyword || !!category_id,
-        page,
-        isLoad,
-        categoryId: category_id,
-        article: res.data.data,
-      }
-    }
-  },
-  async fetch({ store }) {
-    await store.dispatch('category/getCategoryData')
-  },
-  head() {
-    return {
-      title: 'Aliez博客  - 技术博客',
-      meta: [
-        {
-          name: 'keywords',
-          content:
-            'Aliez,博客,Aliez博客,Aliez,bo,blog,boblog,前端开发工程师,前端性能优化,JavaScript,css,html',
+        if (!err) {
+            const isLoad = res.data.data.meta.total_pages > page;
+            return {
+                isClear: !!keyword || !!category_id,
+                page,
+                isLoad,
+                categoryId: category_id,
+                article: res.data.data
+            };
+        }
+    },
+    async fetch({store}) {
+        await store.dispatch('category/getCategoryData');
+    },
+    head() {
+        return {
+            title: 'Aliez博客  - 技术博客',
+            meta: [
+                {
+                    name: 'keywords',
+                    content:
+            'Aliez,博客,Aliez博客,Aliez,bo,blog,boblog,前端开发工程师,前端性能优化,JavaScript,css,html'
+                },
+                {
+                    name: 'description',
+                    content: 'Aliez博客 ，专注于前端开发技术，前端性能优化！'
+                }
+            ]
+        };
+    },
+    computed: {
+        ...mapState({
+            categoryList: state => state.category.categoryList
+        }),
+        // 是否为空数据
+        isEmptyData() {
+            return (
+                this.article
+        && Array.isArray(this.article.data)
+        && this.article.data.length === 0
+            );
+        }
+    },
+    beforeDestroy() {
+        if (this.progress) {
+            this.progress.removeProgress();
+            this.progress = null;
+        }
+
+    },
+    mounted() {
+        this.$nextTick(() => {
+            const ProgressIndicator = require('@/lib/progress-indicator');
+            // eslint-disable-next-line no-new
+            this.progress = new ProgressIndicator();
+        });
+    },
+    methods: {
+        jumpURL(e, id) {
+            e.preventDefault();
+            this.$router.push('/article?id=' + id);
         },
-        {
-          name: 'description',
-          content: 'Aliez博客 ，专注于前端开发技术，前端性能优化！',
+        // 获取新数据
+        async fetchData(id) {
+            const [err, res] = await getArticleList({
+                category_id: id,
+                is_category: 1,
+                is_admin: 1,
+                page: this.page
+            });
+            if (!err) {
+                this.categoryId = id;
+                this.article.data.push(...res.data.data.data);
+                this.isLoad = res.data.data.meta.total_pages > this.page;
+            }
         },
-      ],
+        // 加载更多分页
+        loadMore() {
+            this.page++;
+            this.fetchData();
+        }
     }
-  },
-  computed: {
-    ...mapState({
-      categoryList: (state) => state.category.categoryList,
-    }),
-    // 是否为空数据
-    isEmptyData() {
-      return (
-        this.article &&
-        Array.isArray(this.article.data) &&
-        this.article.data.length === 0
-      )
-    },
-  },
-  beforeDestroy() {
-    if(this.progress) {
-      this.progress.removeProgress()
-      this.progress = null
-    }
-
-  },
-  mounted() {
-    this.$nextTick(() => {
-      const ProgressIndicator = require('@/lib/progress-indicator')
-      // eslint-disable-next-line no-new
-      this.progress = new ProgressIndicator()
-    })
-  },
-  methods: {
-    jumpURL(e, id) {
-      e.preventDefault()
-      this.$router.push('/article?id=' + id)
-    },
-    // 获取新数据
-    async fetchData(id) {
-      const [err, res] = await getArticleList({
-        category_id: id,
-        is_category: 1,
-        is_admin: 1,
-        page: this.page,
-      })
-      if (!err) {
-        this.categoryId = id
-        this.article.data.push(...res.data.data.data)
-        this.isLoad = res.data.data.meta.total_pages > this.page
-      }
-    },
-    // 加载更多分页
-    loadMore() {
-      this.page++
-      this.fetchData()
-    },
-  },
-}
+};
 </script>
 
 <style scoped lang="scss">

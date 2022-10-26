@@ -60,7 +60,7 @@ const actions = {
         const { nickname } = data
 
         commit('SET_NAME', nickname)
-        commit('SET_AVATAR', 'https://cdn.boblog.com/boblog.png')
+        commit('SET_AVATAR', 'https://mbs1.bdstatic.com/searchbox/mappconsole/image/20221026/cd3f97e0-eb66-4d64-a986-3939bb5e09ef.png')
         commit('SET_ADMIN_INFO', data)
         resolve(data)
       }).catch(error => {
