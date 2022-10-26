@@ -1,37 +1,36 @@
 <template>
-  <div>
-    <div class="response-wrap">
-      <div class="article">
-        <h1 class="title">
-          {{ article.title }}
-        </h1>
-        <div class="info">
-             <span v-if="nickname" class="author"> By {{ nickname }} </span>
-                <span class="created-at">{{ article.created_at }}</span>
-             <span v-if="article.category_info" class="category">
-            文章分类：{{ article.category_info.name }}
-          </span>
+    <div>
+        <div class="response-wrap">
+            <div class="article">
+                <h1 class="title">
+                    {{ article.title }}
+                </h1>
+                <div class="info">
+                    <span v-if="nickname" class="author"> By {{ nickname }} </span>
+                    <span class="created-at">{{ article.created_at }}</span>
+                    <span v-if="article.category_info" class="category">
+                        文章分类：{{ article.category_info.name }}
+                    </span>
+                </div>
+                <div class="article-content" v-html="article.content"></div>
+            </div>
+            <div class="fixed-sidebar">
+                <div class="fixed-scroll-top">
+                    <i class="el-icon-top" @click="scrollTop"></i>
+                </div>
+            </div>
         </div>
-         <div class="article-content" v-html="article.content"></div>
-      </div>
-         <div class="fixed-sidebar">
-          <div class="fixed-scroll-top">
-          <i class="el-icon-top" @click="scrollTop"></i>
-        </div>
-      </div>
-    </div>
 
-    <vue-lazy-component @after-leave="onLoadEnd">
-      <ArticleComment class="response-wrap" />
-      <img
-        width="0"
-        height="0"
-        style="display: none"
-        src="https://cdn.boblog.com/login-bg.png"
-        alt="preload"
-      />
-    </vue-lazy-component>
-  </div>
+        <vue-lazy-component @after-leave="onLoadEnd">
+            <article-comment class="response-wrap" />
+            <img
+                width="0"
+                height="0"
+                style="display: none"
+                src="https://cdn.boblog.com/login-bg.png"
+                alt="preload" />
+        </vue-lazy-component>
+    </div>
 </template>
 <script>
 import {getArticleDetail} from '@/request/api/article';
@@ -88,7 +87,7 @@ export default {
             return '';
         }
     },
-    beforeDestroy() {
+    beforeUnmount() {
         if (this.progress) {
             this.progress.removeProgress();
             this.progress = null;

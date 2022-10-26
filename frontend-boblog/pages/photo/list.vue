@@ -1,32 +1,38 @@
 <template>
-  <div class="content">
-        <ul v-if="photoList && photoList.length > 0" class="ul-wrap">
+    <div class="content">
+        <ul
+            v-if="photoList && photoList.length > 0"
+            v-infinite-scroll="getPhotoList"
+            class="ul-wrap"
+            style="overflow:auto">
             <li
                 v-for="(item, index) in photoList"
                 :key="item.id"
                 :class="`content-list ${index % 2 !== 0 && 'list-margin'}`"
-            >
-                <!-- <img :src="item.imgSrc.replace('tjg','pic')" alt="" /> -->
-                <div class="num-tag">{{item.num}}</div>
-                <div class="title">{{item.title}}</div>
+                @click="handlePreview(item.id,item.num)">
+                <img :src="item.imgSrc.replace('tjg','pic')" alt="" />
+                <div class="num-tag">{{ item.num }}</div>
+                <div class="title">{{ item.title }}</div>
             </li>
         </ul>
-            <div v-else class="empty-data">
-      暂无数据
-      <a v-if="isClear" href="/">清空搜索条件</a>
+        <el-empty v-else description="暂无数据"></el-empty>
+        <photo-preview :id="photoId" :num="photoNum" :is-show="isShow" @close="setPreview"></photo-preview>
     </div>
-  </div>
 </template>
 
 <script>
 import {mapState} from 'vuex';
 import {getPhotoList} from '@/request/api/photo';
 import tagData from '@/lib/tag';
+import PhotoPreview from '@/components/photo/Preview';
 
 export default {
     name: 'PhotoIndex',
+    components: {
+        PhotoPreview
+    },
     async asyncData(context) {
-        const {kw, page} = context.query;
+        const {kw, page = 1} = context.query;
         const params = {
             kw,
             page
@@ -36,7 +42,9 @@ export default {
         if (!err) {
             return {
                 photoList: data,
-                hasMore
+                hasMore,
+                page,
+                kw
             };
         }
     },
@@ -44,7 +52,10 @@ export default {
         return {
             tagData,
             activeCollapse: '热门',
-            activeTag: null
+            activeTag: null,
+            isShow: false,
+            photoId: null,
+            photoNum: null
         };
     },
     computed: {
@@ -53,14 +64,31 @@ export default {
         })
     },
 
-    mounted() {
-    },
+    mounted() {},
     methods: {
-        handleClick(tab, event) {
-            console.log(tab, event);
+        handlePreview(id, num) {
+            this.isShow = true;
+            this.photoId = id;
+            this.photoNum = num;
         },
-        handleTag(val) {
-            this.activeTag = val;
+        setPreview(msg){
+            this.isShow = msg;
+        },
+        async getPhotoList(){
+            console.log('load', this.page);
+            if (this.hasMore){
+                this.page++;
+                const params = {
+                    kw: this.kw,
+                    page: this.page
+                };
+                const [err, res] = await getPhotoList(params);
+                if (!err) {
+                    const {hasMore, data} = res.data;
+                    this.photoList = [...this.photoList, ...data];
+                    this.hasMore = hasMore;
+                }
+            }
         }
     }
 };
@@ -69,6 +97,7 @@ export default {
 <style scoped lang="scss">
     .content {
         .ul-wrap {
+            height: calc(100vh - 56px);
             display: flex;
             flex-wrap: wrap;
             padding: 0 12px;

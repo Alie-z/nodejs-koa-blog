@@ -1,42 +1,41 @@
 <template>
-  <div>
-    <ul
-      v-if="article && article.data && article.data.length > 0"
-      class="response-wrap article"
-    >
-      <li v-for="item in article.data" :key="item.id" class="article-list">
-        <a :href="'/article?id=' + item.id" class="article-item" @click="(e) => jumpURL(e, item.id)">
-          <div class="article-image">
-            <img :src="item.img_url" :alt="item.title" />
-          </div>
+    <div>
+        <ul
+            v-if="article && article.data && article.data.length > 0"
+            class="response-wrap article">
+            <li v-for="item in article.data" :key="item.id" class="article-list">
+                <a :href="'/article?id=' + item.id" class="article-item" @click="(e) => jumpURL(e, item.id)">
+                    <div class="article-image">
+                        <img :src="item.img_url" :alt="item.title" />
+                    </div>
 
-          <div class="article-item-content">
-            <h1 class="article-title">
-              {{ item.title }}
-            </h1>
-            <div class="article-description">
-              {{ item.description }}
+                    <div class="article-item-content">
+                        <h1 class="article-title">
+                            {{ item.title }}
+                        </h1>
+                        <div class="article-description">
+                            {{ item.description }}
+                        </div>
+
+                        <div class="article-category">
+                            {{ item.category_info ? item.category_info.name : '' }}
+                        </div>
+                    </div>
+                </a>
+            </li>
+        </ul>
+        <div v-else class="empty-data">
+            <el-empty description="暂无数据"></el-empty>
+            <a v-if="isClear" href="/">清空搜索条件</a>
+        </div>
+
+        <div v-if="isLoad" class="response-wrap more" @click="loadMore">
+            <div class="more-text">点击加载更多</div>
+            <div class="more-arrow">
+                <img src="https://cdn.boblog.com/arrow.png" alt="" />
             </div>
-
-            <div class="article-category">
-              {{ item.category_info ? item.category_info.name : '' }}
-            </div>
-          </div>
-        </a>
-      </li>
-    </ul>
-    <div v-else class="empty-data">
-      暂无数据
-      <a v-if="isClear" href="/">清空搜索条件</a>
+        </div>
     </div>
-
-    <div v-if="isLoad" class="response-wrap more" @click="loadMore">
-      <div class="more-text">点击加载更多</div>
-      <div class="more-arrow">
-        <img src="https://cdn.boblog.com/arrow.png" alt="" />
-      </div>
-    </div>
-  </div>
 </template>
 <script>
 import {mapState} from 'vuex';
@@ -100,7 +99,7 @@ export default {
             );
         }
     },
-    beforeDestroy() {
+    beforeUnmount() {
         if (this.progress) {
             this.progress.removeProgress();
             this.progress = null;

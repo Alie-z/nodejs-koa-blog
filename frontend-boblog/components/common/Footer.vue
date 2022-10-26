@@ -1,16 +1,16 @@
 <template>
-  <div class="response-wrap footer">
-    <div class="site">
-      <span>© Aliez博客</span>
-      <span>17512018620@163.com</span>
+    <div class="response-wrap footer">
+        <div class="site">
+            <span>© Aliez博客</span>
+            <span>17512018620@163.com</span>
+        </div>
     </div>
-  </div>
 </template>
 
 <script>
 export default {
-  name: 'FooterIndex',
-}
+    name: 'FooterIndex'
+};
 </script>
 
 <style scoped lang="scss">
@@ -18,6 +18,7 @@ export default {
   display: flex;
   justify-content: space-between;
   margin: 120px auto 64px;
+  text-align: center;
 }
 .site {
   font-size: 14px;
