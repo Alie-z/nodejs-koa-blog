@@ -13,4 +13,3 @@ module.exports = {
         expiresIn: 60 * 60
     }
 };
-asdf;
