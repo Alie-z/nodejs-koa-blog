@@ -99,7 +99,7 @@ export default {
             console.log('>>>', this.$route.path);
             if (!this.keyword) return false;
             if (this.$route.path.includes('photo')){
-                window.location.href = `/photo/list?kw=sousu/?s0=${this.keyword}`;
+                this.$router.push({path: '/photo/list', query: {kw: `sousu/?s0=${this.keyword}`}});
             } else {
                 window.location.href = `/?keyword=${this.keyword}`;
             }

@@ -135,8 +135,10 @@ export default {
                     word-break: break-all;
                 }
             }
-            .list-margin {
-              margin-right: 0;
+            @media screen and (max-width: 540px) {
+                .list-margin {
+                    margin-right: 0;
+                }
             }
         }
     }

@@ -1,18 +1,19 @@
 <template>
-  <div class="response-wrap content">
-    <el-tabs v-model="activeCollapse" @tab-click="handleClick">
-      <el-tab-pane v-for="item in tagData.classify" :key="item" :name="item" :label="item" >
-         <div v-for="tag in Object.keys(tagData.tagClass[item])" :key="tag" class="tag-wrap">
-                   <el-tag
+    <div class="response-wrap content">
+        <el-tabs v-model="activeCollapse" @tab-click="handleClick">
+            <el-tab-pane v-for="item in tagData.classify" :key="item" :name="item" :label="item">
+                <div v-for="tag in Object.keys(tagData.tagClass[item])" :key="tag" class="tag-wrap">
+                    <el-tag
                         type="info"
                         round
                         :effect="tag === activeTag ? 'plain':'light'"
-                        @click="handleTag(tag)"
-                        >{{ tag }}</el-tag>
-          </div>
-      </el-tab-pane>
-    </el-tabs>
-  </div>
+                        @click="handleTag(tag)">
+                        {{ tag }}
+                    </el-tag>
+                </div>
+            </el-tab-pane>
+        </el-tabs>
+    </div>
 </template>
 
 <script>
@@ -39,11 +40,12 @@ export default {
     mounted() {
     },
     methods: {
-        handleClick(tab, event) {
-            console.log(tab, event);
+        handleClick(tab) {
+            console.log(tab);
         },
         handleTag(val) {
             this.activeTag = val;
+            this.$router.push({path: '/photo/list', query: {kw: tagData.tagAll[val]}});
         }
     }
 };

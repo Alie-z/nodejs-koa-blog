@@ -5,7 +5,7 @@ module.exports = {
         host: 'localhost',
         port: 3306,
         user: 'root',
-        password: '1234qwer!!!!'
+        password: '123456'
     },
     security: {
         secretKey: 'secretKey',
@@ -13,3 +13,4 @@ module.exports = {
         expiresIn: 60 * 60
     }
 };
+asdf;

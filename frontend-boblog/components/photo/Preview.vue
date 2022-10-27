@@ -10,9 +10,6 @@
                     fit="cover"></el-image>
             </el-carousel-item>
         </el-carousel>
-        <div class="icon close" @click="close">
-            <i class="el-icon-close"></i>
-        </div>
         <div class="icon prev" @click="prev">
             <i class="el-icon-arrow-up"></i>
         </div>
@@ -47,9 +44,6 @@ export default {
         };
     },
     methods: {
-        close() {
-            this.$emit('close', false);
-        },
         prev() {
             this.$refs.imgCarousel.prev();
         },
