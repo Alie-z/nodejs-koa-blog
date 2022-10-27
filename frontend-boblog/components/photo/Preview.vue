@@ -79,6 +79,7 @@ export default {
       justify-content: center;
       align-items: center;
       font-size: 30px;
+      color: #ccc;
     }
     .prev {
       bottom: 80px;
