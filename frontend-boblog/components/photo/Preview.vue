@@ -5,7 +5,7 @@
                      direction="vertical" :autoplay="false" arrow="always">
             <el-carousel-item v-for="item in num*1" :key="item">
                 <el-image
-                    style="height: 100%;"
+                    style="width: 100%;"
                     :src="`https://pic.gzhuibei.com/a/1/${id}/${item + 1}.jpg`"
                     fit="cover"></el-image>
             </el-carousel-item>
@@ -67,10 +67,11 @@ export default {
     width: 100vw;
     height: 100vh;
     z-index: 100;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.9);
     .icon {
       position: fixed;
       bottom: 0;
+      right: 0;
       width: 80px;
       height: 80px;
       z-index: 101;
@@ -80,11 +81,10 @@ export default {
       font-size: 30px;
     }
     .prev {
-      right: 0;
       bottom: 80px;
     }
-    .next {
-      right: 0;
+    .close {
+      bottom: 160px;
     }
 
   }
