@@ -31,9 +31,9 @@
 
                         </el-dropdown>
                     </div>
-                    <!-- <a href="https://github.com/lfb/nodejs-koa-blog" target="_blank" class="nav-item">
+                    <a href="https://github.com/Alie-z/nodejs-koa-blog" target="_blank" class="nav-item">
                         Github
-                    </a> -->
+                    </a>
                 </div>
                 <div class="search">
                     <el-input

@@ -42,7 +42,7 @@
 首先使克隆项目，然后进入项目根目录使用命令安装包，最后命令启动项目，代码会根据模型自动创建数据库表的。
 ```
 # 克隆项目代码
-$ git clone https://github.com/lgb/nodejs-koa-blog.git
+$ git clone https://github.com/Alie-z/nodejs-koa-blog
 ```
 
 ### 3.2.数据库
