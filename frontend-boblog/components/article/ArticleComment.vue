@@ -88,7 +88,7 @@
         </div>
 
         <el-dialog
-            v-model:visible="isLogin"
+            :visible="isLogin"
             width="880px"
             top="0"
             :lock-scroll="true"

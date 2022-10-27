@@ -1,7 +1,7 @@
 const moment = require('moment');
-const bcrypt = require('bcryptjs')
-const { sequelize } = require('@core/db')
-const { DataTypes, Model } = require('sequelize')
+const bcrypt = require('bcryptjs');
+const {sequelize} = require('@core/db');
+const {DataTypes, Model} = require('sequelize');
 
 // 定义用户模型
 class User extends Model {
@@ -35,7 +35,7 @@ User.init({
             const salt = bcrypt.genSaltSync(10);
             // 生成加密密码
             const psw = bcrypt.hashSync(val, salt);
-            this.setDataValue("password", psw);
+            this.setDataValue('password', psw);
         },
         allowNull: false,
         comment: '登录密码'
@@ -45,6 +45,12 @@ User.init({
         allowNull: true,
         defaultValue: 1,
         comment: '用户状态:0-禁用,1-正常'
+    },
+    rank: {
+        type: DataTypes.TINYINT,
+        allowNull: true,
+        defaultValue: 99,
+        comment: '用户权限，默认99，越小权限越高'
     },
     created_at: {
         type: DataTypes.DATE,
@@ -58,9 +64,9 @@ User.init({
     sequelize,
     modelName: 'user',
     tableName: 'user'
-})
+});
 
 
 module.exports = {
     User
-}
+};
