@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon app.js",
-    "start": "pm2 start app.js",
-    "stop": "pm2 stop app.js",
-    "restart": "pm2 restart app.js",
+    "start": "pm2 start ./config/pm2/pm2.json",
+    "stop": "pm2 stop ./config/pm2/pm2.json",
+    "restart": "pm2 restart ./config/pm2/pm2.json",
     "test": "jest _tests  --forceExit --runInBand --colors"
   },
   "repository": {
