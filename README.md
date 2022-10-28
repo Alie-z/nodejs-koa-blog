@@ -1,8 +1,8 @@
 <p align="center"><a href="http://www.boblog.com" target="_blank" rel="noopener noreferrer"><img width="234" src="https://mbs1.bdstatic.com/searchbox/mappconsole/image/20221026/cd3f97e0-eb66-4d64-a986-3939bb5e09ef.png" alt="logo"></a></p>
 
-前言：这个项目我花了很多时间去学习维护迭代，其中2020年4月到今年6月份，其中有非常多原因没有继续维护迭代，这一年中，我经历了很多事情：有痛苦的，有快乐的，也有大起大落的。这一年的经历总结一句话：喜欢的，就赶紧去做吧，选择了，就别后悔了。现在，我回来了，这个月我删掉了所有的commit log，删了之前大量的辣鸡代码，把我积累到的知识重新写了一版本，我会继续优化迭代这个项目，希望能和伙伴们继续快乐的生活，快乐的工作！
+项目fork的https://github.com/lfb/nodejs-koa-blog，大家支持原作者，本项目新增了一些爬虫，供学习和探索使用
 
-线上地址：--
+线上地址：http://119.91.139.245:8080/
 
 ## 一、这是个什么的项目？
 实战开发的一套完整的博客项目网站：
@@ -25,6 +25,7 @@
 - 分类管理
 - 评论管理
 - 回复管理
+- 爬虫
 
 ### 2.2.优势
 - 使用精小而强大的 Node.js Koa2 框架做服务端 API 接口。
@@ -91,11 +92,9 @@ $ npm run dev 或者 yarn dev
 > 答：首先，请检查一下使用 npm 或 yarn 安装依赖包没。然后，再请检查一下确保安装好数据库，新建好数据库：boblog，请看上面的数据库配置。最后看下启动打印日志是否有报错的信息。
 3. ... 更多问题请到 [Issues](https://github.com/lfb/nodejs-koa-blog/issues)查阅，或者有问题请到 [Issues 提问](https://github.com/lfb/nodejs-koa-blog/issues/new)。
 
-## License
-
-项目已实现管理员、权限管理、文章、分类、评论等接口，前端模板网站和后台管理系统。自己可以根据项目代码学习，可以到 postman 软件中测试API或学习。
-
-喜欢或对你有帮助的话，请你点一个星星 <strong style='color:red;'>star</strong> 鼓励我，或者您有更好的建议和意见，请提出来告知我，可以留言 [Issues](https://github.com/lfb/nodejs-koa-blog/issues/new)。希望能够帮助到你学习！Thanks！共勉！
+## 六、 服务器部署Node项目、Vue spa静态项目、ssr项目
+[本项目的部署地址](http://119.91.139.245:8080/article?id=1)
+[csdn地址](http://t.csdn.cn/XlApC)
 
 ## todo
 1. tujidao uuid管理
