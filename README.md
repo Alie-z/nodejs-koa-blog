@@ -1,6 +1,7 @@
 <p align="center"><a href="http://www.boblog.com" target="_blank" rel="noopener noreferrer"><img width="234" src="https://mbs1.bdstatic.com/searchbox/mappconsole/image/20221026/cd3f97e0-eb66-4d64-a986-3939bb5e09ef.png" alt="logo"></a></p>
 
-项目fork的https://github.com/lfb/nodejs-koa-blog，大家支持原作者，本项目新增了一些爬虫，供学习和探索使用
+项目fork的https://github.com/lfb/nodejs-koa-blog
+大家支持原作者，本项目新增了一些爬虫、鉴权等，供学习和探索使用
 
 线上地址：http://119.91.139.245:8080/
 
