@@ -94,8 +94,8 @@ $ npm run dev 或者 yarn dev
 3. ... 更多问题请到 [Issues](https://github.com/lfb/nodejs-koa-blog/issues)查阅，或者有问题请到 [Issues 提问](https://github.com/lfb/nodejs-koa-blog/issues/new)。
 
 ## 六、 服务器部署Node项目、Vue spa静态项目、ssr项目
-[本项目的部署地址](http://119.91.139.245:8080/article?id=1)
-[csdn地址](http://t.csdn.cn/XlApC)
+- [本项目的部署地址](http://119.91.139.245:8080/article?id=1)
+- [csdn地址](http://t.csdn.cn/XlApC)
 
 ## todo
 1. tujidao uuid管理
