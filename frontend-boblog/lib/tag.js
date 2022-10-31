@@ -1,5 +1,5 @@
 const uid = '375727';
-const referer = 'https://www.tujidao03.com/';
+const referer = 'https://www.tujidao04.com/';
 const classify = ['热门', '风格', '丝腿足', '情趣', '场景', '服装', '机构', '地区'];
 const tagClass = {
     热门: {
