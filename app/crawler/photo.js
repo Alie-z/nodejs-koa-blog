@@ -6,8 +6,6 @@
 const request = require('request');
 const cheerio = require('cheerio');
 const tag = require('@lib/tag');
-const {Resolve} = require('@lib/helper');
-const res = new Resolve();
 class PhotoCrawler {
     static async getPhoto(params) {
         const {kw, page} = params;

@@ -42,7 +42,8 @@
     "@models": "app/models",
     "@service": "app/service",
     "@validators": "app/validators",
-    "@crawler": "app/crawler"
+    "@crawler": "app/crawler",
+    "@deploy": "app/deploy"
   },
   "homepage": "https://github.com/lfb/nodejs-koa2-blog#readme",
   "dependencies": {
@@ -71,7 +72,10 @@
     "supertest": "^4.0.2",
     "validator": "^10.11.0",
     "xss": "^1.0.6",
-    "pm2": "^5.2.0"
+    "pm2": "^5.2.0",
+    "log4js": "^6.4.1",
+    "prompts": "^2.4.2",
+    "socket.io": "^4.4.1"
   },
   "directories": {
     "test": "_tests"

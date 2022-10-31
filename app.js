@@ -14,6 +14,15 @@ app.use(cors());
 app.use(catchError);
 app.use(parser());
 
+// 开启 socket 服务
+// let socketList = [];
+// const server = require("http").Server(app.callback());
+// const socketIo = require("socket.io")(server);
+// socketIo.on("connection", (socket) => {
+//   socketList.push(socket);
+//   logger.info("a user connected");
+// });
+
 // 接口调用频率限制（Rate-Limiting）
 // Rate limiter middleware for koa.
 // https://github.com/koajs/ratelimit

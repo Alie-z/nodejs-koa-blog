@@ -1,6 +1,6 @@
 const {Rule, LinValidator} = require('@core/lin-validator-v2');
 
-class PhotoValidator extends LinValidator {
+class DeployValidator extends LinValidator {
     constructor() {
         super();
         this.kw = [
@@ -10,10 +10,9 @@ class PhotoValidator extends LinValidator {
                 max: 50
             })
         ];
-        this.page = [new Rule('isNumeric', 'page参数必须是数字')];
     }
 }
 
 module.exports = {
-    PhotoValidator
+    DeployValidator
 };
