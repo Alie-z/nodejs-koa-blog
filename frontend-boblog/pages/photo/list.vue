@@ -16,12 +16,11 @@
             </li>
         </ul>
         <el-empty v-else description="暂无数据"></el-empty>
-        <photo-preview :id="photoId" :num="photoNum" :is-show="isShow" @close="setPreview"></photo-preview>
+        <photo-preview :id="photoId" :num="photoNum"></photo-preview>
     </div>
 </template>
 
 <script>
-import {mapState} from 'vuex';
 import {getPhotoList} from '@/request/api/photo';
 import tagData from '@/lib/tag';
 import PhotoPreview from '@/components/photo/Preview';
@@ -53,26 +52,17 @@ export default {
             tagData,
             activeCollapse: '热门',
             activeTag: null,
-            isShow: false,
             photoId: null,
             photoNum: null
         };
-    },
-    computed: {
-        ...mapState({
-            userInfo: state => state.user.userInfo
-        })
     },
 
     mounted() {},
     methods: {
         handlePreview(id, num) {
-            this.isShow = true;
+            this.$store.commit('photo/SET_PHOTO_IS_SHOW', true);
             this.photoId = id;
             this.photoNum = num;
-        },
-        setPreview(msg){
-            this.isShow = msg;
         },
         async getPhotoList(){
             console.log('load', this.page);

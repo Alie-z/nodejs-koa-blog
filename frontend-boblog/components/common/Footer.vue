@@ -4,15 +4,21 @@
             <span>© Aliez博客</span>
             <span>17512018620@163.com</span>
         </div>
-        <div class="icon close" @click="$router.go(-1)">
+        <div v-show="!isShow" class="icon close" @click="$router.go(-1)">
             <i class="el-icon-back"></i>
         </div>
     </div>
 </template>
 
 <script>
+import {mapState} from 'vuex';
 export default {
-    name: 'FooterIndex'
+    name: 'FooterIndex',
+    computed: {
+        ...mapState({
+            isShow: state => state.photo.isShow
+        })
+    }
 };
 </script>
 

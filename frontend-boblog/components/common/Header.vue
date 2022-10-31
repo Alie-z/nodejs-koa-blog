@@ -139,6 +139,7 @@ export default {
 <style scoped lang="scss">
 .header {
   border-bottom: 1px solid #f0f0f0;
+  padding-right: 12px;
 }
 .header-inner {
   box-sizing: border-box;
@@ -151,7 +152,7 @@ export default {
   cursor: pointer;
   box-sizing: border-box;
   display: block;
-  width: 100px;
+  width: 60px;
   height: 56px;
   background: url('https://mbs1.bdstatic.com/searchbox/mappconsole/image/20221026/cd3f97e0-eb66-4d64-a986-3939bb5e09ef.png') center center no-repeat;
   background-size: 54px;
