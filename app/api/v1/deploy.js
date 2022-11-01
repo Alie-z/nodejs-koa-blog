@@ -17,13 +17,14 @@ const router = new Router({
 
 //
 router.post('/deploy', async ctx => {
-
+    console.log('🚀 > ctx123', ctx.socketIo)
     // 通过验证器校验参数是否通过
     const v = await new DeployValidator().validate(ctx);
 
     // 搜索写真
     const [err, data] = await Deploy.runSh({
         kw: v.get('body.kw'),
+        socketIo:ctx.socketIo
     });
     console.log('🚀 > data', data);
 

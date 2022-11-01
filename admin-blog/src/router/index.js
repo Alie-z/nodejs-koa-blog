@@ -159,6 +159,22 @@ export const constantRoutes = [
     ]
   },
 
+  {
+    path: '/deploy',
+    component: Layout,
+    redirect: '/deploy/index',
+    name: 'Deploy',
+    meta: { title: '部署服务', icon: 'el-icon-odometer' },
+    children: [
+      {
+        path: 'index',
+        name: 'DeployIndex',
+        component: () => import('@/views/deploy/index'),
+        meta: { title: '部署服务', icon: 'el-icon-odometer' }
+      }
+    ]
+  },
+
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]

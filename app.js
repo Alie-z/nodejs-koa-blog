@@ -15,13 +15,25 @@ app.use(catchError);
 app.use(parser());
 
 // 开启 socket 服务
-// let socketList = [];
-// const server = require("http").Server(app.callback());
-// const socketIo = require("socket.io")(server);
-// socketIo.on("connection", (socket) => {
-//   socketList.push(socket);
-//   logger.info("a user connected");
-// });
+// socket模块
+const {Server} = require('socket.io');
+// 为socket新起个端口
+const io = new Server(9001, {
+    // 是否启用与 Socket.IO v2 客户端的兼容性。
+    allowEIO3: true,
+    transports: ['websocket', 'polling'],
+    cors: {
+        origin: '*',
+        methods: ['GET', 'POST']
+    }
+});
+
+
+io.on('connection', socket => {
+    console.log('connection socket连接成功');
+    app.context.socketIo = socket;
+});
+
 
 // 接口调用频率限制（Rate-Limiting）
 // Rate limiter middleware for koa.

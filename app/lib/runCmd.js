@@ -6,14 +6,14 @@ function runCmd(cmd, args, callback, socketIo) {
     const child = spawn(cmd, args);
     let resp = '当前执行路径：' + process.cwd() + '\n';
     logger.info(resp);
-    socketIo && socketIo.emit('deploy-log', resp);
+    socketIo && socketIo.emit('message', resp);
     child.stdout.on('data', buffer => {
         callback('开始部署');
         let info = buffer.toString();
         info = `${new Date().toLocaleString()}: ${info}`;
         resp += info;
         logger.info(info);
-        socketIo && socketIo.emit('deploy-log', info);
+        socketIo && socketIo.emit('message', info);
     // log 较多时，怎么实时将消息通过接口返给前端，只能是 socket ？
     // 除了 socket 怎么将 log 数据一点点通过接口传给前端
     });
@@ -28,7 +28,7 @@ function runCmd(cmd, args, callback, socketIo) {
         info = `${new Date().toLocaleString()}: ${info}`;
         resp += info;
         logger.info(info);
-        socketIo && socketIo.emit('deploy-log', info);
+        socketIo && socketIo.emit('message', info);
     });
     child.stderr.on('end', () => {
         callback(resp);

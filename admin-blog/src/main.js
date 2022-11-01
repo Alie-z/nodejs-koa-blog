@@ -33,6 +33,18 @@ if (process.env.NODE_ENV === 'production') {
   mockXHR()
 }
 
+import SocketIO from 'socket.io-client'
+
+import VueSocketIO from 'vue-socket.io'
+
+const options = {
+  autoConnect: false
+}
+Vue.use(new VueSocketIO({
+  debug: true, // 调试模式，开启后将在命令台输出蓝色的相关信息
+  connection: SocketIO('ws://localhost:9001', options)
+}))
+
 // set ElementUI lang to EN
 Vue.use(ElementUI, { locale })
 // 如果想要中文版 element-ui，按如下方式声明

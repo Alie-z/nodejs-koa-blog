@@ -7,7 +7,7 @@ class Deploy {
     // 执行部署脚本
     // koa 注意异步 404 的问题
     static async runSh(params) {
-        const {kw} = params;
+        const {kw,socketIo} = params;
         console.log('🚀 > send > kw', kw);
         let shPath = path.join(__dirname ,"../../sh/demo.sh");
         switch (kw) {
@@ -32,7 +32,7 @@ class Deploy {
                 function (text) {
                   resolve([null,text]);
                 },
-                // socketIo
+                socketIo
               );
             } catch (e) {
               logger.info(e);
