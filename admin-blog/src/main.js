@@ -34,7 +34,6 @@ if (process.env.NODE_ENV === 'production') {
   const { mockXHR } = require('../mock')
   mockXHR()
 }
-console.log('🚀 > wsPath', process.env.NODE_ENV, wsPath);
 
 import SocketIO from 'socket.io-client'
 

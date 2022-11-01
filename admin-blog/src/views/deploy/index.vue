@@ -88,7 +88,6 @@ export default {
         this.setSocketData('admin',data);
       },
       servers(data) {
-        console.log('🚀 > servers > data', data)
         this.setSocketData('servers',data);
       },
       frontend(data) {
@@ -100,14 +99,12 @@ export default {
     },
     methods: {
         setSocketData(key,data) {
-          console.log('🚀 > setSocketData > key', key);
           const keyData = this.timelineData[key];
           const msg = [...(keyData || []),...[{
                 content: data,
                 timestamp: new Date().toLocaleString()
               }]]
           this.$set(this.timelineData, key, msg);
-          console.log('🚀 > setSocketData > this.timelineData', this.timelineData)
         },
         async start(){
           const res = await deploy({ kw: this.deployForm.deploy })
