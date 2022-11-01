@@ -30,7 +30,7 @@
         </div>
         <el-timeline :reverse="true">
           <el-timeline-item
-            v-for="(activity, index) in timelineData[deployForm.deploy]"
+            v-for="(activity, index) in timelineData[card]"
             :key="index"
             :timestamp="activity.timestamp">
             {{activity.content}}
@@ -54,21 +54,21 @@ export default {
             deployForm: {
               deploy: 'admin'
             },
-            timelineData: {
-              admin:[{
-                content: '活动按期开始',
-                timestamp: '2018-04-15'
-              }, {
-                content: '通过审核',
-                timestamp: '2018-04-13'
-              }, {
-                content: '创建成功',
-                timestamp: '2018-04-11'
-              }]
-            }
+            timelineData: {}
         };
     },
-    mounted() {},
+    mounted() {
+        if(!this.isSocket){
+          // 连接socket服务
+          this.$socket.connect();
+          // 触发server端的start事件
+          this.$socket.emit('start', this.uid);
+        }
+    },
+    beforeDestroy() {
+      this.isSocket= false;
+      this.$socket.disconnect(); 
+    },
     sockets: {
       connect() {
         this.id = this.$socket.id;
@@ -79,19 +79,37 @@ export default {
       },
       message(data) { //监听message事件，方法是后台定义和提供的
         console.log('message 接收到服务端传回的参数：',data );
-        this.msg = [...this.msg,data];
-        console.log('🚀 > message > this.msg', this.msg);
-      }
+      },
+      demo(data) {
+        console.log('🚀 > demo > data', data)
+        this.setSocketData('demo',data);
+      },
+      admin(data) {
+        this.setSocketData('admin',data);
+      },
+      servers(data) {
+        console.log('🚀 > servers > data', data)
+        this.setSocketData('servers',data);
+      },
+      frontend(data) {
+        this.setSocketData('frontend',data);
+      },
+      install(data) {
+        this.setSocketData('install',data);
+      },
     },
     methods: {
-        // 执行socket服务
-        start(){
-          if(!this.isSocket){
-          // 连接socket服务
-          this.$socket.connect();
-          // 触发server端的start事件
-          this.$socket.emit('start', this.uid);
-          }
+        setSocketData(key,data) {
+          console.log('🚀 > setSocketData > key', key);
+          const keyData = this.timelineData[key];
+          const msg = [...(keyData || []),...[{
+                content: data,
+                timestamp: new Date().toLocaleString()
+              }]]
+          this.$set(this.timelineData, key, msg);
+          console.log('🚀 > setSocketData > this.timelineData', this.timelineData)
+        },
+        async start(){
           const res = await deploy({ kw: this.deployForm.deploy })
           console.log('🚀 > start > res', res)
         }
@@ -109,7 +127,7 @@ export default {
   flex-wrap: wrap;
 }
 .box-card {
-   width: 400px;
+   width: 500px;
    margin: 20px;
 }
 </style>

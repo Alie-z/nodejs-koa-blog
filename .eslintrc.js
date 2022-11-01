@@ -2,19 +2,13 @@ module.exports = {
     root: true,
     env: {
         node: true,
-        es6: true,
-        browser: true
+        es6: true
     },
     parserOptions: {
-    // parser: '@babel/eslint-parser',
-    // requireConfigFile: false
         parser: 'babel-eslint'
     },
     extends: [
         'eslint:recommended',
-        // 'plugin:prettier/recommended', // 加入这一行，这是官方推荐的引入方式
-        // '@nuxtjs',
-        // 'plugin:nuxt/recommended',
         'prettier'
     ],
     plugins: [],
