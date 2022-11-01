@@ -81,7 +81,6 @@ export default {
         console.log('message 接收到服务端传回的参数：',data );
       },
       demo(data) {
-        console.log('🚀 > demo > data', data)
         this.setSocketData('demo',data);
       },
       admin(data) {
