@@ -17,7 +17,6 @@ const router = new Router({
 
 //
 router.post('/deploy', async ctx => {
-    console.log('🚀 > ctx123', ctx.socketIo)
     // 通过验证器校验参数是否通过
     const v = await new DeployValidator().validate(ctx);
 

@@ -28,7 +28,9 @@ Vue.use(mavonEditor)
  * Currently MockJs will be used in the production environment,
  * please remove it before going online ! ! !
  */
+let wsPath = 'ws://localhost:9001'
 if (process.env.NODE_ENV === 'production') {
+  wsPath = 'ws://119.91.139.245:9001';
   const { mockXHR } = require('../mock')
   mockXHR()
 }
@@ -40,9 +42,10 @@ import VueSocketIO from 'vue-socket.io'
 const options = {
   autoConnect: false
 }
+
 Vue.use(new VueSocketIO({
   debug: true, // 调试模式，开启后将在命令台输出蓝色的相关信息
-  connection: SocketIO('ws://localhost:9001', options)
+  connection: SocketIO(wsPath, options)
 }))
 
 // set ElementUI lang to EN
