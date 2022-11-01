@@ -26,7 +26,7 @@ router.post('/deploy', async ctx => {
         kw: v.get('body.kw'),
         socketIo:ctx.socketIo
     });
-    console.log('🚀 > data', data);
+    console.log('🚀 > data',err, data);
 
     if (!err) {
         // 返回结果
