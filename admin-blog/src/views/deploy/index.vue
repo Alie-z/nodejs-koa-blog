@@ -5,7 +5,7 @@
                 ref="deployForm"
                 :model="deployForm"
                 inline>
-                <el-form-item label="选择要部署的服务test：" prop="status">
+                <el-form-item label="选择要部署的服务test11：" prop="status">
                     <el-select
                         v-model="deployForm.deploy"
                         placeholder="请选择状态"
