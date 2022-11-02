@@ -1,10 +1,10 @@
 import Vue from 'vue';
 
-import 'normalize.css/normalize.css'; // A modern alternative to CSS resets
+import 'normalize.css/normalize.css';
 
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-import locale from 'element-ui/lib/locale/lang/en'; // lang i18n
+import locale from 'element-ui/lib/locale/lang/en';
 
 import '@/styles/index.scss'; // global css
 
@@ -12,8 +12,8 @@ import App from './App';
 import store from './store';
 import router from './router';
 
-import '@/icons'; // icon
-import '@/permission'; // permission control
+import '@/icons';
+import '@/permission';
 
 import mavonEditor from 'mavon-editor';
 import 'mavon-editor/dist/css/index.css';
@@ -44,7 +44,8 @@ const options = {
 };
 
 Vue.use(new VueSocketIO({
-    debug: true, // 调试模式，开启后将在命令台输出蓝色的相关信息
+    // 调试模式，开启后将在命令台输出蓝色的相关信息
+    debug: false,
     connection: SocketIO(wsPath, options)
 }));
 
@@ -55,6 +56,7 @@ Vue.use(ElementUI, {locale});
 
 Vue.config.productionTip = false;
 
+// eslint-disable-next-line no-new
 new Vue({
     el: '#app',
     router,

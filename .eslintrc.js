@@ -120,7 +120,7 @@ module.exports = {
         'no-dupe-keys': 'off',
         'no-caller': 'error',
         'no-new-object': 'off',
-        'no-negated-condition': 'warn',
+        'no-negated-condition': 'off',
         'no-unmodified-loop-condition': 'warn',
         'no-multi-spaces': 'off',
         'keyword-spacing': ['error', {after: true, before: true}],

@@ -23,9 +23,9 @@ router.post('/deploy', async ctx => {
     // 搜索写真
     const [err, data] = await Deploy.runSh({
         kw: v.get('body.kw'),
-        socketIo:ctx.socketIo
+        socketIo: ctx.socketIo
     });
-    console.log('🚀 > data',err, data);
+    console.log('🚀 > data', err, data);
 
     if (!err) {
         // 返回结果

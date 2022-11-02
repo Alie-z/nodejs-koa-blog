@@ -67,38 +67,5 @@ InitManager.initCore(app);
 app.listen(9000, () => {
     console.log('Koa is listening in http://localhost:9000');
 });
-class Deploy {
-    // 执行部署脚本
-    // koa 注意异步 404 的问题
-    static async set(aa){
 
-    }
-    //   static async runSh(params) {
-    //     const {kw,socketIo} = params;
-    //     let shPath = path.join(__dirname ,`../../sh/${kw}.sh`);
-    //     return new Promise((resolve) => {
-    //       try {
-    //         fs.access(shPath, fs.constants.F_OK, (err) => {
-    //           if(err) {
-    //               return resolve([`${shPath}该脚本不存在`, null ]);
-    //           }else {
-    //             runCmd(
-    //               "sh",
-    //               [shPath],
-    //               function (text) {
-    //                 resolve([null,text]);
-    //               },
-    //               socketIo,
-    //               kw
-    //             );
-    //           }
-    //         });
-    //       } catch (e) {
-    //         logger.info(e);
-    //         resolve([e,null]);
-    //       }
-    //     });
-    // }
-
-}
 module.exports = app;

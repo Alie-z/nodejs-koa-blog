@@ -5,7 +5,7 @@
                 ref="deployForm"
                 :model="deployForm"
                 inline>
-                <el-form-item label="选择要部署的服务：" prop="status">
+                <el-form-item label="选择要部署的服务test：" prop="status">
                     <el-select
                         v-model="deployForm.deploy"
                         placeholder="请选择状态"
@@ -77,7 +77,8 @@ export default {
         disconnect(reason) {
             console.log('disconnect--socket断开服务的原因：', reason);
         },
-        message(data) { // 监听message事件，方法是后台定义和提供的
+        message(data) {
+            // 监听message事件，方法是后台定义和提供的
             console.log('message 接收到服务端传回的参数：', data );
         },
         demo(data) {
