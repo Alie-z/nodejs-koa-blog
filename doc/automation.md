@@ -370,4 +370,4 @@ export function deploy(data) {
 
 ---
 
-> 看完记得 [github](https://github.com/Alie-z/nodejs-koa-blog)点个start
+> 看完记得 [github](https://github.com/Alie-z/nodejs-koa-blog)点个star
