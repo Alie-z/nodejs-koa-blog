@@ -96,8 +96,12 @@ $ npm run dev 或者 yarn dev
 ## 六、 服务器部署Node项目、Vue spa静态项目、ssr项目
 - [本项目的部署地址](http://119.91.139.245:8080/article?id=1)
 - [csdn地址](https://blog.csdn.net/zm06201118/article/details/127576999)
+## 七、 服务器部署Node项目、Vue spa静态项目、ssr项目
+- [本项目的部署地址](http://119.91.139.245:8080/article?id=2)
+- [csdn地址](https://blog.csdn.net/zm06201118/article/details/127665682)
 
 ## todo
 1. tujidao uuid管理
 2. 图片上传切换自己的
+3. 增加域名
 

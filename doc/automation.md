@@ -26,7 +26,7 @@
 > 前端选择要部署的项目点击部署按钮，调用node提供的部署接口，node拿到参数执行部署脚本，并将部署 log 通过websocket返回给前端
 
 流程图如下
-![](https://rte.weiyun.baidu.com/wiki/attach/image/api/imageDownloadAddress?attachId=9e3221b9cf774e81b244e4fe4858dea2&docGuid=gCwT_JLc7MxFcy&sign=eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiYXBwSWQiOjEsInVpZCI6Ik1lZjJhR25IaWgiLCJkb2NJZCI6ImdDd1RfSkxjN014RmN5In0..Nx2FAJiRICq3UNLG.qNdbTu4gHDLIMqC-E4Li0VQy9eGVp4TLXPSjuuckxe4_saxc_9v2QBTfLBtnSNKE2A2tIpYXUWyr46NePzUBRpM6Wx_FQot3_EF_uMxjT8JNm236pLaqLyUPrGD_Bz9eCXoGCMcjjQMof9eURJ5xpEmVUvIuYTgGOF9rfUzIl6rOQpcVxzkfzs7yImh4C99BeaYEt1jfMwPno5bZpd5kWyogIA.h6IK4nzX07P6z2xFE0_i5Q)
+![image1.png](https://bce.bdstatic.com/doc/bd-idg-clw-xiaoduzhushou/Paper/image1_625e427.png)
 
 ## 具体实现
 
@@ -365,3 +365,9 @@ export function deploy(data) {
 
 ```
 
+## 演示
+[查看演示视频](//player.bilibili.com/player.html?bvid=BV1T84y1q7LG&page=1")
+
+---
+
+> 看完记得 [github](https://github.com/Alie-z/nodejs-koa-blog)点个start
