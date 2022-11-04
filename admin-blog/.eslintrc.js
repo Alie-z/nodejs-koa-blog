@@ -197,7 +197,6 @@ module.exports = {
         'no-constant-condition': 'off',
         'global-require': 'warn',
         'comma-style': 'off',
-        'line-comment-position': ['error', {position: 'above'}],
         'no-tabs': 'off',
         'block-spacing': ['error', 'never'],
         'no-dupe-keys': 'off',

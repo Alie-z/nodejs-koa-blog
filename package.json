@@ -8,7 +8,8 @@
     "start": "pm2 start ./config/pm2/pm2.json",
     "stop": "pm2 stop ./config/pm2/pm2.json",
     "restart": "pm2 restart ./config/pm2/pm2.json",
-    "test": "jest _tests  --forceExit --runInBand --colors"
+    "test": "jest _tests  --forceExit --runInBand --colors",
+    "lint": "eslint --fix --ext .js,.vue src"
   },
   "repository": {
     "type": "git",

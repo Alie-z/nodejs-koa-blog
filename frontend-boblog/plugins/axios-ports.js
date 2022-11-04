@@ -1,5 +1,5 @@
-import { setClient } from '~/request/request'
+import {setClient} from '~/request/request';
 
-export default ({ app, store }) => {
-    setClient(app.$axios)
-}
+export default ({app, store}) => {
+    setClient(app.$axios);
+};

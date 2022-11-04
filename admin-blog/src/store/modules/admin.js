@@ -1,98 +1,98 @@
-import { login, getInfo } from '@/api/admin'
-import { getToken, setToken, removeToken } from '@/utils/auth'
-import { resetRouter } from '@/router'
+import {login, getInfo} from '@/api/admin';
+import {getToken, setToken, removeToken} from '@/utils/auth';
+import {resetRouter} from '@/router';
 
 const getDefaultState = () => {
-  return {
-    token: getToken(),
-    name: '',
-    avatar: '',
-    adminInfo: {}
-  }
-}
+    return {
+        token: getToken(),
+        name: '',
+        avatar: '',
+        adminInfo: {}
+    };
+};
 
-const state = getDefaultState()
+const state = getDefaultState();
 
 const mutations = {
-  RESET_STATE: (state) => {
-    Object.assign(state, getDefaultState())
-  },
-  SET_TOKEN: (state, token) => {
-    state.token = token
-  },
-  SET_NAME: (state, name) => {
-    state.name = name
-  },
-  SET_AVATAR: (state, avatar) => {
-    state.avatar = avatar
-  },
-  SET_ADMIN_INFO(state, data) {
-    state.adminInfo = data
-  }
-}
+    RESET_STATE: state => {
+        Object.assign(state, getDefaultState());
+    },
+    SET_TOKEN: (state, token) => {
+        state.token = token;
+    },
+    SET_NAME: (state, name) => {
+        state.name = name;
+    },
+    SET_AVATAR: (state, avatar) => {
+        state.avatar = avatar;
+    },
+    SET_ADMIN_INFO(state, data) {
+        state.adminInfo = data;
+    }
+};
 
 const actions = {
-  // user login
-  login({ commit }, adminInfo) {
-    const { email, password } = adminInfo
-    return new Promise((resolve, reject) => {
-      login({ email: email.trim(), password: password }).then(response => {
-        const { data } = response
-        commit('SET_TOKEN', data.token)
-        setToken(data.token)
-        resolve()
-      }).catch(error => {
-        reject(error)
-      })
-    })
-  },
+    // user login
+    login({commit}, adminInfo) {
+        const {email, password} = adminInfo;
+        return new Promise((resolve, reject) => {
+            login({email: email.trim(), password: password}).then(response => {
+                const {data} = response;
+                commit('SET_TOKEN', data.token);
+                setToken(data.token);
+                resolve();
+            }).catch(error => {
+                reject(error);
+            });
+        });
+    },
 
-  // get user info
-  getInfo({ commit, state }) {
-    return new Promise((resolve, reject) => {
-      getInfo(state.token).then(response => {
-        const { data } = response
+    // get user info
+    getInfo({commit, state}) {
+        return new Promise((resolve, reject) => {
+            getInfo(state.token).then(response => {
+                const {data} = response;
 
-        if (!data) {
-          return reject('Verification failed, please Login again.')
-        }
+                if (!data) {
+                    return reject('Verification failed, please Login again.');
+                }
 
-        const { nickname } = data
+                const {nickname} = data;
 
-        commit('SET_NAME', nickname)
-        commit('SET_AVATAR', 'https://mbs1.bdstatic.com/searchbox/mappconsole/image/20221026/cd3f97e0-eb66-4d64-a986-3939bb5e09ef.png')
-        commit('SET_ADMIN_INFO', data)
-        resolve(data)
-      }).catch(error => {
-        reject(error)
-      })
-    })
-  },
+                commit('SET_NAME', nickname);
+                commit('SET_AVATAR', 'https://mbs1.bdstatic.com/searchbox/mappconsole/image/20221026/cd3f97e0-eb66-4d64-a986-3939bb5e09ef.png');
+                commit('SET_ADMIN_INFO', data);
+                resolve(data);
+            }).catch(error => {
+                reject(error);
+            });
+        });
+    },
 
-  // user logout
-  logout({ commit, state }) {
-    return new Promise((resolve, reject) => {
-      removeToken() // must remove  token  first
-      resetRouter()
-      commit('RESET_STATE')
-      resolve()
-    })
-  },
+    // user logout
+    logout({commit, state}) {
+        return new Promise((resolve, reject) => {
+            removeToken(); // must remove  token  first
+            resetRouter();
+            commit('RESET_STATE');
+            resolve();
+        });
+    },
 
-  // remove token
-  resetToken({ commit }) {
-    return new Promise(resolve => {
-      removeToken() // must remove  token  first
-      commit('RESET_STATE')
-      resolve()
-    })
-  }
-}
+    // remove token
+    resetToken({commit}) {
+        return new Promise(resolve => {
+            removeToken(); // must remove  token  first
+            commit('RESET_STATE');
+            resolve();
+        });
+    }
+};
 
 export default {
-  namespaced: true,
-  state,
-  mutations,
-  actions
-}
+    namespaced: true,
+    state,
+    mutations,
+    actions
+};
 
