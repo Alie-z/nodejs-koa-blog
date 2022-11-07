@@ -1,22 +1,24 @@
-const qiniu = require('qiniu')
+const qiniu = require('qiniu');
 const ACCESS_KEY = 'UxXRnLJnRsC3AaEII661ZgPOtmcFeaXigeKbc85O';
 const SECRET_KEY = '_5m492oDojUEH-hPt02JDFNmbU2VCpMZU8UY_inv';
+// const ACCESS_KEY = 'AiyY5rgHbK8AgHYgx37-YSvE0QQqtRFCWTEilv6h';
+// const SECRET_KEY = 'Vw8LBhaythL2U1wzkTJtG5nyCgy7V2ETR-qgsibd';
 const mac = new qiniu.auth.digest.Mac(ACCESS_KEY, SECRET_KEY);
 
-const { Auth } = require('@middlewares/auth');
+const {Auth} = require('@middlewares/auth');
 const AUTH_ADMIN = 16;
 
-const { Resolve } = require('@lib/helper');
+const {Resolve} = require('@lib/helper');
 const res = new Resolve();
 
-const Router = require('koa-router')
+const Router = require('koa-router');
 
 const router = new Router({
     prefix: '/api/v1'
-})
+});
 
 // 获取token
-router.post('/upload/token', new Auth(AUTH_ADMIN).m, async (ctx) => {
+router.post('/upload/token', new Auth(AUTH_ADMIN).m, async ctx => {
     // console.log('mac', mac)
     const options = {
         scope: 'boblog-v2',
@@ -26,9 +28,9 @@ router.post('/upload/token', new Auth(AUTH_ADMIN).m, async (ctx) => {
     ctx.response.status = 200;
     const data = {
         token: putPolicy.uploadToken(mac)
-    }
-    ctx.body = res.json(data)
-})
+    };
+    ctx.body = res.json(data);
+});
 
-module.exports = router
+module.exports = router;
 

@@ -128,6 +128,7 @@ export default {
         },
         // 上传图片成功回调
         handleUploadSuccess(file) {
+            console.log('🚀 > handleUploadSuccess > file', file);
             this.ruleForm.img_url = `https://cdn.boblog.com/${file.key}`;
             this.$message.success('上传成功!');
         },

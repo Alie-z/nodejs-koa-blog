@@ -102,7 +102,5 @@ $ npm run dev 或者 yarn dev
 - [csdn地址](https://blog.csdn.net/zm06201118/article/details/127665682)
 
 ## todo
-1. tujidao uuid管理
-2. 图片上传切换自己的
-3. 增加域名
+
 
