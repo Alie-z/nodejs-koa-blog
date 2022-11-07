@@ -160,7 +160,6 @@ export const constantRoutes = [
             }
         ]
     },
-
     {
         path: '/deploy',
         component: Layout,
@@ -173,6 +172,21 @@ export const constantRoutes = [
                 name: 'DeployIndex',
                 component: () => import('@/views/deploy/index'),
                 meta: {title: '部署服务', icon: 'el-icon-odometer'}
+            }
+        ]
+    },
+    {
+        path: '/demo',
+        component: Layout,
+        redirect: '/demo/index',
+        name: 'Demo',
+        meta: {title: '其它', icon: 'el-icon-odometer'},
+        children: [
+            {
+                path: 'upload',
+                name: 'DemoUpload',
+                component: () => import('@/views/demo/upload'),
+                meta: {title: '文件上传', icon: 'el-icon-odometer'}
             }
         ]
     },
