@@ -85,21 +85,17 @@ $ npm run dev 或者 yarn dev
 3. 启动服务: npm run dev 或者 yarn dev; 浏览器打开：http://localhost:9528/ 即可以访问。
 ```
 
-## 五、FAQ
-1. 没有yarn环境，npm 可以吗？
-> 答：可以的，建议使用 yarn，yarn 比 npm 速度快，主要是安装版本统一。
-
-2. 启动 Koa2 项目报错，请问原因？
-> 答：首先，请检查一下使用 npm 或 yarn 安装依赖包没。然后，再请检查一下确保安装好数据库，新建好数据库：boblog，请看上面的数据库配置。最后看下启动打印日志是否有报错的信息。
-3. ... 更多问题请到 [Issues](https://github.com/lfb/nodejs-koa-blog/issues)查阅，或者有问题请到 [Issues 提问](https://github.com/lfb/nodejs-koa-blog/issues/new)。
-
-## 六、 服务器部署Node项目、Vue spa静态项目、ssr项目
+## 五、 服务器部署Node项目、Vue spa静态项目、ssr项目
 - [本项目的部署地址](http://119.91.139.245:8080/article?id=1)
 - [csdn地址](https://blog.csdn.net/zm06201118/article/details/127576999)
 
-## 七、 从零到一实现自动化部署
+## 六、 从零到一实现自动化部署
 - [本项目的部署地址](http://119.91.139.245:8080/article?id=2)
 - [csdn地址](https://blog.csdn.net/zm06201118/article/details/127665682)
+
+## 七、 Node koa2 + vue 实现文件分片上传
+- [本项目的部署地址](http://119.91.139.245:8080/article?id=3)
+- [csdn地址](https://blog.csdn.net/zm06201118/article/details/127752589)
 
 ## todo
 
