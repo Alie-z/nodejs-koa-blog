@@ -1,4 +1,4 @@
 export default {
     list: '/article',
-    detail: '/article',
-}
+    detail: '/article'
+};
