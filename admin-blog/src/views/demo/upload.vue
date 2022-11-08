@@ -1,7 +1,7 @@
 <template>
     <div>
         <input id="fileInput" type="file" name="file" multiple="multiple" />
-        <button @click="sliceUpload(0)">递归上传</button>
+        <button @click="sliceUpload(0)">串行上传</button>
         <div>
             start:{{ time.start }}--end:{{ time.end }}
             耗时：{{ time.end-time.start }}
@@ -43,7 +43,7 @@ export default {
             if (!file) return;
             // 文件分片
 
-            let chunkSize = 1024 * 1024; // 50KB 50KB Section size
+            let chunkSize = 1024 * 500; // 50KB 50KB Section size
             // [ 文件名, 文件后缀 ]
             const [fname, suffix] = file.name.split('.');
             // 获取当前片的起始字节
@@ -74,7 +74,7 @@ export default {
             // [ 文件名, 文件后缀 ]
             const [fname, suffix] = file.name.split('.');
             // 文件分片
-            let size = 1024 * 1024; // 分片大小设置
+            let size = 1024 * 500; // 分片大小设置
             let fileChunks = [];
             let index = 0;        // 分片序号
             for (let cur = 0; cur < file.size; cur += size) {

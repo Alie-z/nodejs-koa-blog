@@ -24,12 +24,12 @@
 ## 前端实现分片
 > 在JavaScript中，FIle对象是' Blob '对象的子类，该对象包含一个重要的方法slice，通过该方法我们可以这样分割二进制文件
 
-### 简单版
+### 简单版（串行）
 >上传完成一个分片再继续下一个，全部上传完成，调用merge通知服务端合并
 ```js
 // template
         <input id="fileInput" type="file" name="file" multiple="multiple" />
-        <button @click="sliceUpload(0)">递归上传</button>
+        <button @click="sliceUpload(0)">串行上传</button>
         <div>
             start:{{ time.start }}--end:{{ time.end }}
             耗时：{{ time.end-time.start }}
@@ -183,6 +183,7 @@ export default {
     }
 };
 ```
+[前端完整代码](https://github.com/Alie-z/nodejs-koa-blog/blob/master/admin-blog/src/views/demo/upload.vue)
 
 ### 服务端实现
 ```js
@@ -301,3 +302,42 @@ router.post('/upload/merge', async ctx => {
 module.exports = router;
 
 ```
+
+## 并发真的比串行快吗？
+并发就是我们经常说的多线程，就有由多个线程共同去完成一个任务，同步进行，目的是为了提高效率；串行也就是单线程，就是一个线程完成一个任务，效率相对比较低。
+
+文件大小     | 串行 (ms)    | 并行  (ms)  | 差值  (ms) 
+-------- |-------- | ----- | -----
+139kb  | 10|19|-9
+7.6mb  | 225|101|124
+35.9mb  | 582|262|320
+463.6mb  | 3291|2897|394
+
+根据上面这些结果来看，在数据量较小的情况下，并发效率不如串行，但是随着数据量不断增大，并发的效率就体现出来了。
+
+![image.png](https://bce.bdstatic.com/doc/bd-idg-clw-xiaoduzhushou/Paper/image_e359246.png)
+
+![image.png](https://bce.bdstatic.com/doc/bd-idg-clw-xiaoduzhushou/Paper/image_ab70286.png)
+
+![image.png](https://bce.bdstatic.com/doc/bd-idg-clw-xiaoduzhushou/Paper/image_30570fa.png)
+
+![image.png](https://bce.bdstatic.com/doc/bd-idg-clw-xiaoduzhushou/Paper/image_79d11ec.png)
+
+
+## tips
+1. 使用 koa-body 代替 koa-bodyparser 和 koa-multer
+> 之前使用 koa2 的时候，处理 post 请求使用的是 koa-bodyparser，同时如果是图片上传使用的是 koa-multer。
+>这两者的组合没什么问题，不过 koa-multer 和 koa-route（注意不是 koa-router） 存在不兼容的问题。
+>这两者可以通过 koa-body 代替，并且只是用 koa-body 即可。
+
+2. koa-body版本不同引入方式不同
+> 网上查询koa-body的使用方式一般都是`const koaBody = require('koa-body');`
+>但是我安装的 "koa-body": "^6.0.1"，是`const {koaBody} = require('koa-body');` 引入
+
+3. 前端分片上传文件太大，分片太多可能会引起 `429 (Too Many Requests)`报错
+>封装一个并发限制的异步调度器或者调整分片的size
+
+
+---
+
+> 看完记得 [github](https://github.com/Alie-z/nodejs-koa-blog)点个star
