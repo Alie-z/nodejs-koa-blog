@@ -34,6 +34,7 @@ export const constantRoutes = [
     {
         path: '/login',
         component: () => import('@/views/login/index'),
+        meta: {whiteList: true},
         hidden: true
     },
 
@@ -186,7 +187,7 @@ export const constantRoutes = [
                 path: 'upload',
                 name: 'DemoUpload',
                 component: () => import('@/views/demo/upload'),
-                meta: {title: '文件上传', icon: 'el-icon-odometer'}
+                meta: {title: '文件上传', icon: 'el-icon-odometer', whiteList: true}
             }
         ]
     },

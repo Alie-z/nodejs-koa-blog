@@ -25,8 +25,7 @@ export default {
                 console.log(res);
             });
         },
-        sliceUpload(index) {
-            const that = this;
+        sliceUpload1(index) {
             const file = document.getElementById('fileInput').files[0];
 
             if (!file) return;
@@ -34,7 +33,7 @@ export default {
 
             let chunkSize = 1024 * 500; // 50KB 50KB Section size
             // [ 文件名, 文件后缀 ]
-            const [fname, fext] = file.name.split('.');
+            const [fname, suffix] = file.name.split('.');
             // 获取当前片的起始字节
             const start = index * chunkSize;
             if (start > file.size) {// 当超出文件大小，停止递归上传
@@ -43,7 +42,7 @@ export default {
             }
             const blob = file.slice(start, start + chunkSize);
             // 为每片进行命名
-            const blobName = `${fname}.${index}.${fext}`;
+            const blobName = `${fname}.${index}.${suffix}`;
             const blobFile = new File([blob], blobName);
 
             const formData = new FormData();
@@ -53,54 +52,62 @@ export default {
                 // 递归分片上传
                 this.sliceUpload(++index);
             });
-
-
-            // let fileChunks = [];
-
-            // let index = 0;        // Section num
-
-            // for (let cur = 0; cur < file.size; cur += size) {
-            //     fileChunks.push({
-            //         hash: index++,
-            //         chunk: file.slice(cur, cur + size)
-            //     });
-            // }
-
-
-            // let pool = []; // Concurrent pool
-
-            // let max = 3; // Maximum concurrency
-
-            // for (let i = 0; i < fileChunks.length; i++) {
-
-            //     let item = fileChunks[i];
-            //     let formData = new FormData();
-            //     formData.append('file', item);
-            //     // 上传分片
-            //     let task = that.$axios({
-            //         method: 'post',
-            //         url: 'http://localhost:9000/api/v1/upload/slice',
-            //         data: formData
-            //     });
-
-            //     task.then(() => {
-            //         // 从并发池中移除已经完成的请求
-            //         let index = pool.findIndex(t => t === task);
-
-            //         pool.splice(index);
-
-            //     });
-            //     // 把请求放入并发池中，如果已经达到最大并发量
-            //     pool.push(task);
-            //     if (pool.length === max) {
-            //         // All requests are requested complete
-            //         await Promise.race(pool);
-
-            //     }
-
-            // }
-
-
+        },
+        sliceUpload() {
+            const file = document.getElementById('fileInput').files[0];
+            if (!file) return;
+            // [ 文件名, 文件后缀 ]
+            const [fname, suffix] = file.name.split('.');
+            // 文件分片
+            let size = 1024 * 50; // 分片大小设置
+            let fileChunks = [];
+            let index = 0;        // 分片序号
+            for (let cur = 0; cur < file.size; cur += size) {
+                fileChunks.push({
+                    hash: index++,
+                    blob: file.slice(cur, cur + size)
+                });
+            }
+            const uploadFileChunks = async function (list){
+                if (list.length === 0){
+                    // 所有分片上传完成，通知如无
+                    this.merge(file.name);
+                    return;
+                }
+                let pool = [];       // 并发池
+                let max = 3;         // 最大并发数
+                let finish = 0;      // 完成数量
+                let failList = [];   // 失败列表
+                for (let i = 0;i < list.length;i++){
+                    let item = list[i];
+                    const blobName = `${fname}.${item.hash}.${suffix}`;
+                    const blobFile = new File([item], blobName);
+                    let formData = new FormData();
+                    formData.append('file', blobFile);
+                    let task = axios.post('http://localhost:9000/api/v1/upload/slice', formData).then(res => {
+                        console.log('🚀 > task > res', i, '>>', res);
+                    });
+                    task.then(data=>{
+                        // 从并发池中移除已经完成的请求
+                        let index = pool.findIndex(t=> t === task);
+                        pool.splice(index);
+                    }).catch(()=>{
+                        failList.push(item);
+                    }).finally(()=>{
+                        finish++;
+                        // 如果有失败的重新上传
+                        if (finish === list.length){
+                            uploadFileChunks(failList);
+                        }
+                    });
+                    pool.push(task);
+                    if (pool.length === max){
+                        // Promise.race 赛跑，哪个结果获得的快，就返回那个结果，不管结果本身是成功状态还是失败状态。
+                        await Promise.race(pool);
+                    }
+                }
+            };
+            uploadFileChunks(fileChunks);
         }
     }
 };
