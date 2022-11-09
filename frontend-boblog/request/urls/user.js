@@ -1,6 +1,6 @@
 export default {
-  login: '/user/login',
-  register: '/user/register',
-  auth: '/user/auth',
-  list: '/user/list'
-}
+    login: '/user/login',
+    register: '/user/register',
+    auth: '/user/auth',
+    list: '/user/list'
+};

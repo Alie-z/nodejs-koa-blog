@@ -16,7 +16,10 @@
     "stop": "pm2 stop ./pm2.json",
     "restart": "pm2 restart ./pm2.json",
     "generate": "nuxt generate",
-    "lint": "eslint --fix --ext .js"
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prettier": "prettier --check .",
+    "prettier:fix": "prettier --write ."
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",

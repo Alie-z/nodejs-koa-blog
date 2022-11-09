@@ -9,7 +9,10 @@
     "stop": "pm2 stop ./config/pm2/pm2.json",
     "restart": "pm2 restart ./config/pm2/pm2.json",
     "test": "jest _tests  --forceExit --runInBand --colors",
-    "lint": "eslint --fix --ext .js,.vue src"
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prettier": "prettier --check .",
+    "prettier:fix": "prettier --write ."
   },
   "repository": {
     "type": "git",

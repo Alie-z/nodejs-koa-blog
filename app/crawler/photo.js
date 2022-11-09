@@ -22,7 +22,7 @@ class PhotoCrawler {
                                 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36'
                         }
                     },
-                    async function (error, response, body) {
+                    async (error, response, body) => {
                         // console.log('🚀 > body', body);
                         if (!error && response.statusCode == 200) {
                             const $ = cheerio.load(body);
