@@ -3,7 +3,7 @@
 项目fork的https://github.com/lfb/nodejs-koa-blog
 大家支持原作者，本项目新增了一些爬虫、鉴权等，供学习和探索使用
 
-线上地址：http://119.91.139.245:8080/
+线上地址：http://blog.at-will.cn/
 
 ## 一、这是个什么的项目？
 实战开发的一套完整的博客项目网站：
@@ -86,15 +86,15 @@ $ npm run dev 或者 yarn dev
 ```
 
 ## 五、 服务器部署Node项目、Vue spa静态项目、ssr项目
-- [本项目的部署地址](http://119.91.139.245:8080/article?id=1)
+- [本项目的部署地址](http://blog.at-will.cn/article?id=1)
 - [csdn地址](https://blog.csdn.net/zm06201118/article/details/127576999)
 
 ## 六、 从零到一实现自动化部署
-- [本项目的部署地址](http://119.91.139.245:8080/article?id=2)
+- [本项目的部署地址](http://blog.at-will.cn/article?id=2)
 - [csdn地址](https://blog.csdn.net/zm06201118/article/details/127665682)
 
 ## 七、 Node koa2 + vue 实现文件分片上传
-- [本项目的部署地址](http://119.91.139.245:8080/article?id=3)
+- [本项目的部署地址](http://blog.at-will.cn/article?id=3)
 - [csdn地址](https://blog.csdn.net/zm06201118/article/details/127752589)
 
 ## todo
