@@ -11,5 +11,10 @@ module.exports = {
         secretKey: 'secretKey',
         // 过期时间 1小时
         expiresIn: 60 * 60
+    },
+    qiniu: {
+        ak: 'xxx',
+        sk: 'xxx',
+        scope: 'xxx'
     }
 };

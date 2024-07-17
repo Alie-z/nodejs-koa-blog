@@ -2,32 +2,32 @@
 /*Syntax highlighting for the Web*/
 /*@font-face {*/
 /*  font-family: "Roboto";*/
-/*  src: url("https://cdn.boblog.com/Roboto-Regular.ttf");*/
+/*  src: url("http://cdn.at-will.cn/Roboto-Regular.ttf");*/
 /*}*/
 
 /*@font-face {*/
 /*  font-family: "NotoSansTC";*/
-/*  src: url("https://cdn.boblog.com/NotoSansTC-Regular.otf");*/
+/*  src: url("http://cdn.at-will.cn/NotoSansTC-Regular.otf");*/
 /*}*/
 
 @font-face {
   font-family: "SourceCodePro-Regular";
-  src: url("https://cdn.boblog.com/SourceCodePro-Regular.ttf");
+  src: url("http://cdn.at-will.cn/SourceCodePro-Regular.ttf");
   font-weight: normal;
 }
 /*@font-face {*/
 /*  font-family: "SourceCodePro";*/
-/*  src: url("https://cdn.boblog.com/SourceCodePro-Bold.ttf");*/
+/*  src: url("http://cdn.at-will.cn/SourceCodePro-Bold.ttf");*/
 /*  font-weight: bold;*/
 /*}*/
 @font-face {
   font-family: "SourceCodePro";
-  src: url("https://cdn.boblog.com/SourceCodePro-Medium.ttf");
+  src: url("http://cdn.at-will.cn/SourceCodePro-Medium.ttf");
   font-weight: 600;
 }
 /*@font-face {*/
 /*  font-family: "JetBrainsMono";*/
-/*  src: url("https://cdn.boblog.com/JetBrainsMono-VariableFont_wght.ttf");*/
+/*  src: url("http://cdn.at-will.cn/JetBrainsMono-VariableFont_wght.ttf");*/
 /*}*/
 
 /*html,*/
@@ -73,14 +73,15 @@
 /*code.hljs {*/
 /*  padding: 3px 5px*/
 /*}*/
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   font-family: SourceCodePro-Regular;
 }
- img {
-   width: 100%;
- }
+img {
+  width: 100%;
+}
 
 .hljs {
   box-sizing: border-box;
@@ -99,49 +100,74 @@ html, body {
   /*font-family: "JetBrainsMono";*/
 }
 
-.hljs-comment,.hljs-quote {
+.hljs-comment,
+.hljs-quote {
   color: #5c6370;
-  font-style: italic
+  font-style: italic;
 }
 
-.hljs-doctag,.hljs-formula,.hljs-keyword {
-  color: #c678dd
+.hljs-doctag,
+.hljs-formula,
+.hljs-keyword {
+  color: #c678dd;
 }
 
-.hljs-deletion,.hljs-name,.hljs-section,.hljs-selector-tag,.hljs-subst {
-  color: #e06c75
+.hljs-deletion,
+.hljs-name,
+.hljs-section,
+.hljs-selector-tag,
+.hljs-subst {
+  color: #e06c75;
 }
 
 .hljs-literal {
-  color: #56b6c2
+  color: #56b6c2;
 }
 
-.hljs-addition,.hljs-attribute,.hljs-meta .hljs-string,.hljs-regexp,.hljs-string {
-  color: #98c379
+.hljs-addition,
+.hljs-attribute,
+.hljs-meta .hljs-string,
+.hljs-regexp,
+.hljs-string {
+  color: #98c379;
 }
 
-.hljs-attr,.hljs-number,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-pseudo,.hljs-template-variable,.hljs-type,.hljs-variable {
-  color: #d19a66
+.hljs-attr,
+.hljs-number,
+.hljs-selector-attr,
+.hljs-selector-class,
+.hljs-selector-pseudo,
+.hljs-template-variable,
+.hljs-type,
+.hljs-variable {
+  color: #d19a66;
 }
 
-.hljs-bullet,.hljs-link,.hljs-meta,.hljs-selector-id,.hljs-symbol,.hljs-title {
-  color: #61aeee
+.hljs-bullet,
+.hljs-link,
+.hljs-meta,
+.hljs-selector-id,
+.hljs-symbol,
+.hljs-title {
+  color: #61aeee;
 }
 
-.hljs-built_in,.hljs-class .hljs-title,.hljs-title.class_ {
-  color: #e6c07b
+.hljs-built_in,
+.hljs-class .hljs-title,
+.hljs-title.class_ {
+  color: #e6c07b;
 }
 
 .hljs-emphasis {
-  font-style: italic
+  font-style: italic;
 }
 
 .hljs-strong {
-  font-weight: 700
+  font-weight: 700;
 }
 
 .hljs-link {
-  text-decoration: underline
+  text-decoration: underline;
 }
 
 .opacity {
@@ -164,13 +190,12 @@ html, body {
   margin: 0 auto;
 }
 
-
 .progress-indicator {
   position: fixed;
   top: 0;
   left: 0;
   height: 3px;
-  background-color: #0A74DA;
+  background-color: #0a74da;
 }
 
 @media screen and (max-width: 540px) {
@@ -180,10 +205,12 @@ html, body {
   }
 }
 
-.page-enter-active, .page-leave-active {
+.page-enter-active,
+.page-leave-active {
   transition: opacity 500ms;
 }
 
-.page-enter, .page-leave-active {
+.page-enter,
+.page-leave-active {
   opacity: 0;
 }

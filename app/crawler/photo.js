@@ -9,6 +9,8 @@ const tag = require('@lib/tag');
 class PhotoCrawler {
     static async getPhoto(params) {
         const {kw, page} = params;
+        // console.log('🚀 > getPhoto > kw:', encodeURI(tag.referer + kw + '&page=' + page));
+
         return new Promise((resolve, reject) => {
             try {
                 // 爬取关键词图集

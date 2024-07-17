@@ -1,61 +1,65 @@
-const dotenv = require('dotenv');
-const envConfig = dotenv.config({path: `.env.${process.env.NODE_ENV}`}).parsed;
+const dotenv = require("dotenv");
+const envConfig = dotenv.config({
+  path: `.env.${process.env.NODE_ENV}`,
+}).parsed;
 
 export default {
-    // Global page headers: https://go.nuxtjs.dev/config-head
-    head: {
-        title: 'frontend',
-        htmlAttrs: {
-            lang: 'en'
-        },
-        meta: [
-            {charset: 'utf-8'},
-            // eslint-disable-next-line max-len
-            {name: 'viewport', content: 'width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no'},
-            {hid: 'description', name: 'description', content: ''},
-            {name: 'format-detection', content: 'telephone=no'}
-        ],
-        link: [{rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}]
+  // Global page headers: https://go.nuxtjs.dev/config-head
+  head: {
+    title: "frontend",
+    htmlAttrs: {
+      lang: "en",
     },
-
-    // Global CSS: https://go.nuxtjs.dev/config-css
-    css: [
-        '@/assets/css/common.css',
-        'element-ui/lib/theme-chalk/index.css'
+    meta: [
+      { charset: "utf-8" },
+      // eslint-disable-next-line max-len
+      {
+        name: "viewport",
+        content:
+          "width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no",
+      },
+      { hid: "description", name: "description", content: "" },
+      { name: "format-detection", content: "telephone=no" },
+      { name: "referrer", content: "no-referrer" },
     ],
+    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+  },
 
-    // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-    plugins: [
-        '@/plugins/axios',
-        '@/plugins/axios-ports',
-        '@/plugins/md',
-        '@/plugins/route',
-        {src: '@/plugins/scrollTo', mode: 'client'},
-        '@/plugins/element-ui'
-    ],
+  // Global CSS: https://go.nuxtjs.dev/config-css
+  css: ["@/assets/css/common.css", "element-ui/lib/theme-chalk/index.css"],
 
-    // Auto import components: https://go.nuxtjs.dev/config-components
-    // components: true,
+  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
+  plugins: [
+    "@/plugins/axios",
+    "@/plugins/axios-ports",
+    "@/plugins/md",
+    "@/plugins/route",
+    { src: "@/plugins/scrollTo", mode: "client" },
+    "@/plugins/element-ui",
+  ],
 
-    // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-    buildModules: [
+  // Auto import components: https://go.nuxtjs.dev/config-components
+  // components: true,
+
+  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
+  buildModules: [
     // https://go.nuxtjs.dev/eslint
     // '@nuxtjs/eslint-module',
-    ],
+  ],
 
-    // Modules: https://go.nuxtjs.dev/config-modules
-    modules: [
-        '@nuxtjs/axios',
-        'cookie-universal-nuxt',
-        ['cookie-universal-nuxt', {alias: 'cookiz'}]
-    ],
-    env: envConfig,
-    // Build Configuration: https://go.nuxtjs.dev/config-build
-    build: {
-        transpile: [/^element-ui/]
-    },
-    server: {
-        port: '3001',
-        host: 'localhost'
-    }
+  // Modules: https://go.nuxtjs.dev/config-modules
+  modules: [
+    "@nuxtjs/axios",
+    "cookie-universal-nuxt",
+    ["cookie-universal-nuxt", { alias: "cookiz" }],
+  ],
+  env: envConfig,
+  // Build Configuration: https://go.nuxtjs.dev/config-build
+  build: {
+    transpile: [/^element-ui/],
+  },
+  server: {
+    port: "3001",
+    host: "localhost",
+  },
 };
