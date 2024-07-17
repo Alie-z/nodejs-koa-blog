@@ -85,8 +85,8 @@ app.use(
 
 InitManager.initCore(app);
 
-app.listen(8888, () => {
-    console.log('Koa is listening in http://localhost:9000');
+app.listen(9001, () => {
+    console.log('Koa is listening in http://localhost:9001');
 });
 
 module.exports = app;
