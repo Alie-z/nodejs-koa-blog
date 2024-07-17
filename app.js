@@ -12,26 +12,30 @@ const catchError = require('./middlewares/exception');
 
 const app = new Koa();
 // 处理静态资源
-app.use(static(__dirname + '/public', {
-    // 默认为true  访问的文件为index.html  可以修改为别的文件名或者false
-    index: false,
-    // 是否同意传输隐藏文件
-    hidden: false,
-    // 如果为true，则在返回next()之后进行服务，从而允许后续中间件先进行响应
-    defer: true
-}));
+app.use(
+    static(__dirname + '/public', {
+        // 默认为true  访问的文件为index.html  可以修改为别的文件名或者false
+        index: false,
+        // 是否同意传输隐藏文件
+        hidden: false,
+        // 如果为true，则在返回next()之后进行服务，从而允许后续中间件先进行响应
+        defer: true
+    })
+);
 
 app.use(cors());
 app.use(catchError);
 // koa-body 中间插件 文件提交及form-data
-app.use(koaBody({
-    formLimit: '1mb',
-    multipart: true,
-    formidable: {
-        maxFileSize: 200 * 1024 * 1024,
-        keepExtensions: true
-    }
-}));
+app.use(
+    koaBody({
+        formLimit: '1mb',
+        multipart: true,
+        formidable: {
+            maxFileSize: 200 * 1024 * 1024,
+            keepExtensions: true
+        }
+    })
+);
 
 // 开启 socket 服务
 // socket模块
@@ -47,12 +51,10 @@ const io = new Server(9001, {
     }
 });
 
-
 io.on('connection', socket => {
     console.log('connection socket连接成功');
     app.context.socketIo = socket;
 });
-
 
 // 接口调用频率限制（Rate-Limiting）
 // Rate limiter middleware for koa.
@@ -83,7 +85,7 @@ app.use(
 
 InitManager.initCore(app);
 
-app.listen(9000, () => {
+app.listen(8888, () => {
     console.log('Koa is listening in http://localhost:9000');
 });
 
