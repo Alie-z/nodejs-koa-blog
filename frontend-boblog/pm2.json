@@ -1,10 +1,13 @@
 {
-  "apps": [
-    {
-      "name": "nuxt web",
-      "script": "nuxt start",
-      "max_memory_restart": "512M",
-      "restart_delay": 60000
-    }
-  ]
+    "apps": [
+        {
+            "name": "nuxt web",
+            "script": "nuxt start",
+            "max_memory_restart": "512M",
+            "restart_delay": 60000,
+            "env": {
+                "NODE_ENV": "production"
+            }
+        }
+    ]
 }
