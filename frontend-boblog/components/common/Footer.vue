@@ -1,24 +1,30 @@
 <template>
-    <div class="response-wrap footer">
-        <div class="site">
-            <span>© Aliez博客</span>
-            <span>17512018620@163.com</span>
-        </div>
-        <div v-show="!isShow" class="icon close" @click="$router.go(-1)">
-            <i class="el-icon-back"></i>
-        </div>
+  <div class="response-wrap footer">
+    <div class="site">
+      <span>© Aliez博客</span>
+      <span>17512018620@163.com</span>
     </div>
+    <div class="site">
+      <a style="color: #fff" href="https://beian.miit.gov.cn/" target="_blank">
+        滇ICP备2024032825号-2
+      </a>
+    </div>
+
+    <div v-show="!isShow" class="icon close" @click="$router.go(-1)">
+      <i class="el-icon-back"></i>
+    </div>
+  </div>
 </template>
 
 <script>
-import {mapState} from 'vuex';
+import { mapState } from "vuex";
 export default {
-    name: 'FooterIndex',
-    computed: {
-        ...mapState({
-            isShow: state => state.photo.isShow
-        })
-    }
+  name: "FooterIndex",
+  computed: {
+    ...mapState({
+      isShow: (state) => state.photo.isShow,
+    }),
+  },
 };
 </script>
 
